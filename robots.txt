@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ziv-daniel.github.io/smart-income/sitemap.xml

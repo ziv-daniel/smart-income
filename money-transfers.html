@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Ways to Send Money to Israel (2026) - SmartHomeIL</title>
+  <meta name="description" content="Compare the best money transfer services to Israel in 2026. See real fees, exchange rates, and delivery times for Wise, Payoneer, PayPal, Western Union, and bank transfers.">
+  <meta name="keywords" content="send money to Israel, money transfer Israel, Wise Israel, Payoneer Israel, international transfer fees, USD to ILS, best exchange rate Israel">
+  <meta name="author" content="SmartHomeIL">
+  <link rel="canonical" href="https://ziv-daniel.github.io/smart-income/money-transfers.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Best Ways to Send Money to Israel (2026) - SmartHomeIL">
+  <meta property="og:description" content="Compare fees, exchange rates, and speed of the top money transfer services to Israel. Find the cheapest way to send money.">
+  <meta property="og:url" content="https://ziv-daniel.github.io/smart-income/money-transfers.html">
+  <meta property="og:site_name" content="SmartHomeIL">
+  <meta property="og:locale" content="en_IL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Best Ways to Send Money to Israel (2026) - SmartHomeIL">
+  <meta name="twitter:description" content="Compare fees, exchange rates, and speed of the top money transfer services to Israel.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the cheapest way to send money to Israel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wise (formerly TransferWise) is typically the cheapest option for sending money to Israel, with fees around 0.55% and the mid-market exchange rate with minimal markup."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does an international money transfer to Israel take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Transfer times vary by provider: Wise takes 1-2 business days, Payoneer 2-5 days, bank wire transfers 3-5 days. Western Union offers same-day cash pickup options."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need an Israeli bank account to receive money in Israel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For most digital transfer services like Wise and Payoneer, yes, you need an Israeli bank account. Western Union allows cash pickup at post offices without a bank account."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">&#127968;</span>
+        Smart<span>HomeIL</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="smart-home.html">Smart Home</a></li>
+        <li><a href="salary-calculator.html">Salary Calculator</a></li>
+        <li><a href="money-transfers.html" class="active">Money Transfers</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="mobile-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== Page Hero ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Best Ways to Send Money to Israel <span class="highlight">(2026)</span></h1>
+      <p>Compare fees, exchange rates, and delivery speed from the top money transfer providers. Find out which service saves you the most on every transfer.</p>
+    </div>
+  </section>
+
+  <!-- ===== Breadcrumb ===== -->
+  <div class="breadcrumb">
+    <div class="container">
+      <a href="index.html">Home</a>
+      <span>&#8250;</span>
+      <span class="current">Money Transfers</span>
+    </div>
+  </div>
+
+  <!-- ===== Transfer Calculator ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Transfer Cost Calculator</h2>
+        <p>Enter the amount you want to send and instantly see how much each provider will cost you, including hidden exchange rate markups.</p>
+      </div>
+
+      <div class="calculator-container">
+        <div class="calc-card">
+          <form id="transfer-form">
+            <div class="form-group">
+              <label for="transfer-amount">Amount to Send (USD)</label>
+              <input type="number" id="transfer-amount" class="form-input" value="1000" min="1" step="100" placeholder="Enter amount in USD">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Results Table -->
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Fee</th>
+              <th>Exchange Rate</th>
+              <th>You Receive (ILS)</th>
+              <th>Speed</th>
+              <th>Rating</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="transfer-results">
+            <!-- Populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Savings Message -->
+      <div id="transfer-savings" class="hidden" style="background: rgba(6, 214, 160, 0.1); border: 1px solid rgba(6, 214, 160, 0.3); border-radius: var(--radius-md); padding: 1.2rem 1.5rem; margin-top: 1.5rem; font-size: 1rem; color: #059669; text-align: center;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Detailed Provider Reviews ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Detailed Provider Reviews</h2>
+        <p>In-depth look at each money transfer service, with pros, cons, and our honest assessment.</p>
+      </div>
+
+      <!-- ===== Wise ===== -->
+      <div class="content-section" id="wise">
+        <h2>Wise (formerly TransferWise) <span class="badge badge-success">Our Top Pick</span></h2>
+        <p>Wise is our recommended provider for most people sending money to Israel. They use the real mid-market exchange rate with no hidden markup, and their fees are among the lowest in the industry. What you see is what you get.</p>
+
+        <ul>
+          <li><strong>Low transparent fees</strong> &mdash; averaging just 0.55% of the transfer amount</li>
+          <li><strong>Mid-market exchange rate</strong> &mdash; no markup hidden in the rate, unlike banks and most competitors</li>
+          <li><strong>1-2 business days</strong> delivery for most USD to ILS transfers</li>
+          <li><strong>Multi-currency account</strong> available &mdash; hold and convert 50+ currencies</li>
+          <li><strong>Great app</strong> for managing international money, tracking transfers, and setting rate alerts</li>
+        </ul>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Cheapest option for most transfer amounts</li>
+              <li>Fully transparent fees &mdash; no hidden costs</li>
+              <li>Excellent mobile app and web interface</li>
+              <li>Wise debit card option for spending abroad</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>Cons</h4>
+            <ul>
+              <li>Not instant &mdash; takes 1-2 business days</li>
+              <li>Limited cash pickup options in Israel</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="affiliate-cta">
+          <div class="cta-text">
+            <h4>Open a Wise Account</h4>
+            <p>Start sending money to Israel at the real exchange rate. Join over 16 million customers worldwide.</p>
+          </div>
+          <a href="https://wise.com/invite/"
+             target="_blank"
+             rel="noopener noreferrer sponsored"
+             class="btn btn-primary"
+             data-affiliate="wise"
+             data-category="money-transfer">
+            Open a Wise Account &#8594;
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== Payoneer ===== -->
+      <div class="content-section" id="payoneer">
+        <h2>Payoneer</h2>
+        <p>Payoneer is especially popular among freelancers, remote workers, and small businesses. If you receive payments from international clients through platforms like Fiverr or Upwork, Payoneer integrates directly with those marketplaces.</p>
+
+        <ul>
+          <li><strong>Popular for freelancers and businesses</strong> &mdash; built for receiving international payments</li>
+          <li><strong>Multi-currency receiving accounts</strong> &mdash; get paid in USD, EUR, GBP, and more</li>
+          <li><strong>Lower fees for business transfers</strong> compared to personal transfers</li>
+          <li><strong>2-5 business days</strong> for withdrawals to Israeli bank accounts</li>
+        </ul>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Great for freelancers and remote workers</li>
+              <li>Business receiving accounts in multiple currencies</li>
+              <li>Seamless Fiverr/Upwork/Amazon integration</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>Cons</h4>
+            <ul>
+              <li>Higher fees for personal transfers</li>
+              <li>Slower than Wise for standard transfers</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="affiliate-cta">
+          <div class="cta-text">
+            <h4>Sign Up for Payoneer</h4>
+            <p>The go-to platform for freelancers receiving international payments in Israel.</p>
+          </div>
+          <a href="https://www.payoneer.com"
+             target="_blank"
+             rel="noopener noreferrer sponsored"
+             class="btn btn-primary"
+             data-affiliate="payoneer"
+             data-category="money-transfer">
+            Sign Up for Payoneer &#8594;
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== PayPal ===== -->
+      <div class="content-section" id="paypal">
+        <h2>PayPal</h2>
+        <p>PayPal is widely recognized and accepted, making it convenient for quick transfers. However, their exchange rates include a significant markup (around 3.5%), which makes it one of the more expensive options for regular international transfers.</p>
+
+        <ul>
+          <li><strong>Widely accepted</strong> &mdash; most people already have a PayPal account</li>
+          <li><strong>Instant for PayPal-to-PayPal</strong> transfers (though withdrawal takes longer)</li>
+          <li><strong>High fees and poor exchange rates</strong> &mdash; the convenience comes at a cost</li>
+        </ul>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Widely known and trusted worldwide</li>
+              <li>Buyer protection on eligible transactions</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>Cons</h4>
+            <ul>
+              <li>Expensive exchange rates (3.5% markup over mid-market)</li>
+              <li>High fees on international transfers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Western Union ===== -->
+      <div class="content-section" id="western-union">
+        <h2>Western Union</h2>
+        <p>Western Union is one of the oldest money transfer services. Its main advantage in Israel is the cash pickup option, available at post offices and agent locations across the country. This can be useful if the recipient does not have an Israeli bank account.</p>
+
+        <ul>
+          <li><strong>Cash pickup option</strong> at post offices and agent locations throughout Israel</li>
+          <li><strong>Moderate fees</strong> &mdash; varies by send/receive method and corridor</li>
+          <li>Multiple send options: online, app, or in-person at agent locations</li>
+        </ul>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Cash pickup available across Israel</li>
+              <li>Fast options available (minutes for cash pickup)</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>Cons</h4>
+            <ul>
+              <li>Expensive for regular/recurring transfers</li>
+              <li>Exchange rate markup varies and can be high</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Bank Wire Transfer ===== -->
+      <div class="content-section" id="bank-transfer">
+        <h2>Bank Wire Transfer</h2>
+        <p>The traditional bank wire is the method most people default to, but it is also the most expensive. Banks typically charge $25-50 per international wire, and their exchange rates include a 3-4% markup over the mid-market rate. For a $5,000 transfer, this can mean losing $200 or more compared to using Wise.</p>
+
+        <ul>
+          <li><strong>Traditional method</strong> &mdash; available at any bank with international wire capability</li>
+          <li><strong>Highest fees</strong> &mdash; $25-50 per transfer (sender side), plus possible intermediary and receiving bank fees</li>
+          <li><strong>Worst exchange rates</strong> &mdash; banks typically add a 3-4% markup over the mid-market rate</li>
+        </ul>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Most people already have a bank account</li>
+              <li>Familiar process for those who prefer traditional banking</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>Cons</h4>
+            <ul>
+              <li>Most expensive option overall (fees + rate markup)</li>
+              <li>Slowest delivery (3-5 business days or more)</li>
+              <li>Hidden intermediary bank fees possible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Tips Section ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="content-section">
+        <h2>Tips for Sending Money to Israel</h2>
+        <p>Practical advice to help you save money and avoid common pitfalls when transferring funds internationally.</p>
+
+        <ol>
+          <li><strong>Always compare the total cost (fee + exchange rate markup).</strong> A provider with "zero fees" might hide the cost in a poor exchange rate. The calculator above shows the real amount you receive, which is what matters.</li>
+          <li><strong>For regular transfers, set up recurring transfers with Wise.</strong> If you send money monthly (e.g., supporting family, paying rent, or topping up your Israeli account), Wise lets you automate recurring transfers at the best available rate.</li>
+          <li><strong>For large transfers (buying property), get a quote from multiple providers.</strong> When sending $50,000+ for a real estate purchase, even a 0.5% difference in exchange rate is worth hundreds of dollars. Contact providers directly for large-amount pricing.</li>
+          <li><strong>Timing matters: exchange rates fluctuate, consider rate alerts.</strong> The USD/ILS rate can swing 2-3% in a month. Use Wise or XE rate alerts to notify you when the rate hits your target, then send at the right moment.</li>
+          <li><strong>For new olim: Nefesh B'Nefesh has partnerships with some providers.</strong> If you are making Aliyah, check with Nefesh B'Nefesh for special deals and guidance on transferring your savings to Israel.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ Section ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="content-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>What is the cheapest way to send money to Israel?</h3>
+        <p>For most amounts, <strong>Wise</strong> is the cheapest option. They use the real mid-market exchange rate with no hidden markup, and their fees average around 0.55%. For a $1,000 transfer, you will typically save $30-60 compared to a bank wire. Use the calculator above to compare your specific amount.</p>
+
+        <h3>How long does an international transfer take?</h3>
+        <p>It depends on the provider and payment method. <strong>Wise</strong> typically takes 1-2 business days. <strong>Payoneer</strong> withdrawals to an Israeli bank account take 2-5 business days. <strong>Bank wire transfers</strong> are the slowest at 3-5 business days, sometimes longer if intermediary banks are involved. <strong>Western Union</strong> cash pickups can be available within minutes.</p>
+
+        <h3>Do I need an Israeli bank account?</h3>
+        <p>For most transfer services (Wise, Payoneer, bank wires), the recipient needs an Israeli bank account to receive the funds. <strong>Western Union</strong> is the exception &mdash; it offers cash pickup at post offices and agent locations, so no bank account is needed. If you are new to Israel, opening a bank account at Bank Leumi, Bank Hapoalim, or Discount Bank is straightforward with your Teudat Zehut (ID card).</p>
+
+        <h3>What exchange rate will I get?</h3>
+        <p>The exchange rate depends on the provider. <strong>Wise</strong> gives you the real mid-market rate (the one you see on Google or XE.com) with no markup. Most other providers add a markup of 1-4% on top of the mid-market rate. <strong>Banks are the worst</strong>, typically adding 3-4% markup. Always check the rate you are getting against the mid-market rate on Google to see the real cost.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Newsletter ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="newsletter-box">
+        <h3>Get Rate Alerts &amp; Transfer Tips</h3>
+        <p>Subscribe to receive USD/ILS rate alerts, new provider deals, and tips for saving on international transfers.</p>
+        <form class="newsletter-form" action="#" method="post">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- About Column -->
+        <div class="footer-about">
+          <h4>&#127968; SmartHomeIL</h4>
+          <p>Your trusted guide to smart home products, salary tools, and money transfers for English-speaking residents of Israel. Every product tested on Israeli 220V.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="smart-home.html">Smart Home</a></li>
+            <li><a href="salary-calculator.html">Salary Calculator</a></li>
+            <li><a href="money-transfers.html">Money Transfers</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div>
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html#contact">Contact</a></li>
+            <li><a href="about.html#privacy">Privacy Policy</a></li>
+            <li><a href="about.html#terms">Terms of Use</a></li>
+          </ul>
+        </div>
+
+        <!-- Popular Guides -->
+        <div>
+          <h4>Popular Guides</h4>
+          <ul class="footer-links">
+            <li><a href="smart-home.html#zigbee">Zigbee Devices</a></li>
+            <li><a href="smart-home.html#ac">Smart AC Control</a></li>
+            <li><a href="smart-home.html#lighting">Smart Lighting</a></li>
+            <li><a href="smart-home.html#vacuums">Robot Vacuums</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 SmartHomeIL. All rights reserved.</p>
+        <p class="disclaimer">Disclosure: Some links on this site are affiliate links. We may earn a small commission if you purchase through these links, at no extra cost to you. This helps support the site and allows us to continue testing products. All opinions are our own and based on real testing.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>

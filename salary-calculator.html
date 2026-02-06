@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Israeli Salary Calculator - Calculate your gross to net salary in Israel. Understand income tax, Bituach Leumi, health insurance, pension, and Keren Hishtalmut deductions.">
+  <title>Israeli Salary Calculator - Gross to Net | SmartHomeIL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="canonical" href="https://ziv-daniel.github.io/smart-income/salary-calculator.html">
+  <meta property="og:title" content="Israeli Salary Calculator - Gross to Net">
+  <meta property="og:description" content="Calculate your Israeli take-home pay. Understand income tax, Bituach Leumi, pension, and Keren Hishtalmut.">
+  <meta property="og:url" content="https://ziv-daniel.github.io/smart-income/salary-calculator.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Israeli Salary Calculator",
+    "url": "https://ziv-daniel.github.io/smart-income/salary-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "description": "Calculate your gross to net salary in Israel including income tax, Bituach Leumi, health insurance, pension, and Keren Hishtalmut.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "ILS"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">&#9889;</span> Smart<span>HomeIL</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="smart-home.html">Smart Home</a></li>
+        <li><a href="salary-calculator.html">Salary Calculator</a></li>
+        <li><a href="money-transfers.html">Money Transfers</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="mobile-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Israeli Salary Calculator - Gross to Net</h1>
+      <p>Understand your take-home pay in Israel. Calculate income tax, Bituach Leumi, health insurance, pension contributions, and more - all in one place.</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span class="current">Salary Calculator</span>
+    </div>
+  </div>
+
+  <!-- Salary Calculator -->
+  <section class="section">
+    <div class="container">
+      <div class="calculator-container">
+        <div class="calc-card">
+          <h2 style="margin-bottom:1.5rem;text-align:center">Calculate Your Net Salary</h2>
+
+          <form id="salary-form" onsubmit="return false">
+
+            <!-- Gross Monthly Salary -->
+            <div class="form-group">
+              <label for="gross-salary">Gross Monthly Salary (NIS)</label>
+              <input type="number" id="gross-salary" class="form-input" value="15000" min="0" step="100" placeholder="e.g. 15000">
+            </div>
+
+            <div class="form-row">
+              <!-- Tax Credit Points -->
+              <div class="form-group">
+                <label for="credit-points">
+                  Tax Credit Points
+                  <br><small>Israeli residents: 2.25 | Women: +0.5 | New olim: extra points</small>
+                </label>
+                <input type="number" id="credit-points" class="form-input" value="2.25" min="0" max="20" step="0.25">
+              </div>
+
+              <!-- Pension Contribution -->
+              <div class="form-group">
+                <label for="pension-rate">Pension Contribution (%)</label>
+                <select id="pension-rate" class="form-input form-select">
+                  <option value="6">6%</option>
+                  <option value="6.5" selected>6.5% (Standard)</option>
+                  <option value="7">7%</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Keren Hishtalmut -->
+            <div class="form-group" style="display:flex;align-items:center;gap:0.75rem">
+              <input type="checkbox" id="keren-toggle" style="width:20px;height:20px;cursor:pointer;accent-color:var(--accent)">
+              <label for="keren-toggle" style="margin-bottom:0;cursor:pointer">
+                Keren Hishtalmut (Education Fund)
+                <br><small>2.5% employee contribution + 7.5% employer contribution. One of Israel's best tax-free savings benefits.</small>
+              </label>
+            </div>
+
+            <!-- Calculate Button -->
+            <button type="button" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:0.5rem" onclick="document.getElementById('salary-form').dispatchEvent(new Event('input'))">
+              Calculate Net Salary
+            </button>
+          </form>
+
+          <!-- Results Section -->
+          <div id="calc-results" class="hidden">
+            <div class="calc-result">
+              <h3>Your Salary Breakdown</h3>
+
+              <!-- Salary Breakdown Bar -->
+              <div style="margin-bottom:0.75rem">
+                <div id="salary-bar" style="display:flex;height:24px;border-radius:12px;overflow:hidden;margin-bottom:1.5rem"></div>
+                <div style="display:flex;flex-wrap:wrap;gap:0.75rem;font-size:0.78rem;opacity:0.9">
+                  <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:50%;background:#06d6a0;display:inline-block"></span> Net</span>
+                  <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:50%;background:#ef476f;display:inline-block"></span> Tax</span>
+                  <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:50%;background:#ffd166;display:inline-block"></span> Bituach Leumi</span>
+                  <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:50%;background:#118ab2;display:inline-block"></span> Health</span>
+                  <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:50%;background:#073b4c;display:inline-block"></span> Pension</span>
+                  <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:50%;background:#8338ec;display:inline-block"></span> Keren</span>
+                </div>
+              </div>
+
+              <!-- Result Grid -->
+              <div class="result-grid">
+                <div class="result-item">
+                  <div class="result-label">Net Monthly Salary</div>
+                  <div class="result-value highlight-value" id="result-net">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Income Tax</div>
+                  <div class="result-value" id="result-tax">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Bituach Leumi</div>
+                  <div class="result-value" id="result-bl">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Health Insurance</div>
+                  <div class="result-value" id="result-health">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Pension</div>
+                  <div class="result-value" id="result-pension">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Keren Hishtalmut</div>
+                  <div class="result-value" id="result-keren">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Total Deductions</div>
+                  <div class="result-value" id="result-total-deductions">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Effective Tax Rate</div>
+                  <div class="result-value" id="result-effective-rate">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Total Employer Cost</div>
+                  <div class="result-value" id="result-employer-cost">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Annual Net Salary</div>
+                  <div class="result-value highlight-value" id="result-annual-net">--</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explanation Section -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="content-section">
+        <h2>Understanding Israeli Salary Deductions</h2>
+
+        <h3>Israeli Income Tax Brackets (2024/2025)</h3>
+        <p>Israel uses a progressive income tax system. The more you earn, the higher the rate on the additional income. Here are the current monthly tax brackets:</p>
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Monthly Income (NIS)</th>
+                <th>Tax Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Up to 7,010</td>
+                <td>10%</td>
+              </tr>
+              <tr>
+                <td>7,010 - 10,060</td>
+                <td>14%</td>
+              </tr>
+              <tr>
+                <td>10,060 - 16,150</td>
+                <td>20%</td>
+              </tr>
+              <tr>
+                <td>16,150 - 22,440</td>
+                <td>31%</td>
+              </tr>
+              <tr>
+                <td>22,440 - 46,690</td>
+                <td>35%</td>
+              </tr>
+              <tr>
+                <td>46,690 - 60,130</td>
+                <td>47%</td>
+              </tr>
+              <tr>
+                <td>Above 60,130</td>
+                <td>50%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Every Israeli resident receives 2.25 tax credit points (Nekudot Zikuy), each worth approximately 235 NIS per month. Women receive an additional 0.5 points, and parents of young children may receive extra points.</p>
+
+        <h3>What is Bituach Leumi (National Insurance)?</h3>
+        <p>Bituach Leumi is Israel's national social security system, similar to Social Security in the United States. It provides coverage for:</p>
+        <ul>
+          <li><strong>Old-age pensions</strong> - Monthly payments after retirement age</li>
+          <li><strong>Disability insurance</strong> - Benefits for those unable to work due to disability</li>
+          <li><strong>Unemployment benefits</strong> - Financial support during job transitions</li>
+          <li><strong>Maternity leave</strong> - Paid leave for new parents</li>
+          <li><strong>Work injury insurance</strong> - Coverage for workplace accidents</li>
+          <li><strong>Child allowances</strong> - Monthly stipend per child</li>
+        </ul>
+        <p>The employee rate is 0.4% on income up to 60% of the average wage (~7,122 NIS/month) and 7% on income above that threshold, up to the maximum insurable income (~47,465 NIS/month). Health insurance tax is collected alongside Bituach Leumi at rates of 3.1% and 5% respectively.</p>
+
+        <h3>What is Keren Hishtalmut (Education Fund)?</h3>
+        <p>Keren Hishtalmut is one of Israel's best tax benefits and a unique savings vehicle that does not exist in most other countries. Here's why it's so valuable:</p>
+        <ul>
+          <li><strong>Tax-free growth</strong> - All returns on the fund are completely tax-free (up to certain limits)</li>
+          <li><strong>Employer match</strong> - Your employer contributes 7.5% of your salary while you contribute only 2.5%</li>
+          <li><strong>Short lock-in</strong> - The fund matures after just 6 years (3 years if used for education or professional development)</li>
+          <li><strong>No capital gains tax</strong> - Upon withdrawal after maturity, you pay zero tax on the gains (up to the ceiling of approximately 15,712 NIS/month in salary)</li>
+          <li><strong>Flexible use</strong> - After 6 years, withdraw the entire amount for any purpose</li>
+        </ul>
+        <p>For salaried employees, the employer's 7.5% contribution is essentially free money added to your compensation. Combined with the tax-free growth, Keren Hishtalmut offers returns that are nearly impossible to match with regular investment accounts.</p>
+
+        <h3>Special Tax Benefits for New Olim (Immigrants)</h3>
+        <p>Israel offers significant tax benefits to new immigrants (olim chadashim) for up to 10 years after making Aliyah:</p>
+        <ul>
+          <li><strong>Extra tax credit points</strong> - 3 additional credit points for the first 18 months, 2 points for the next 12 months, and 1 point for the following 12 months</li>
+          <li><strong>Foreign income exemption</strong> - Complete tax exemption on income earned abroad for 10 years</li>
+          <li><strong>Foreign asset reporting exemption</strong> - No requirement to report foreign assets for 10 years</li>
+          <li><strong>Capital gains exemption</strong> - Tax exemption on capital gains from foreign assets for 10 years</li>
+          <li><strong>Rental income exemption</strong> - Tax-free rental income from foreign properties for 10 years</li>
+        </ul>
+        <p>These benefits make Israel one of the most attractive countries for immigrants from a tax perspective, especially for those with foreign investments, real estate, or remote work income.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wise CTA Section -->
+  <section class="section">
+    <div class="container">
+      <div class="affiliate-cta">
+        <div class="cta-text">
+          <h4>Receiving Salary from Abroad?</h4>
+          <p>If you work remotely or receive payments in foreign currency, Wise offers the best exchange rates with low transparent fees. Save hundreds of NIS per month compared to traditional bank transfers.</p>
+        </div>
+        <a href="https://wise.com/invite/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-affiliate="wise" data-category="salary">
+          Try Wise Free &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Home Budget Calculator -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Smart Home Budget Calculator</h2>
+        <p>Planning to automate your home in Israel? Estimate the cost based on the number of rooms and your desired automation level.</p>
+      </div>
+
+      <div class="calculator-container">
+        <div class="calc-card" id="budget-form">
+          <h3 style="margin-bottom:1.5rem;text-align:center">Estimate Your Smart Home Budget</h3>
+
+          <!-- Number of Rooms -->
+          <div class="form-group">
+            <label for="num-rooms">Number of Rooms: <strong id="rooms-display">3</strong></label>
+            <input type="range" id="num-rooms" class="form-input" min="1" max="8" value="3" step="1" oninput="document.getElementById('rooms-display').textContent=this.value">
+          </div>
+
+          <!-- Automation Level -->
+          <div class="form-group">
+            <label for="automation-level">Automation Level</label>
+            <select id="automation-level" class="form-input form-select">
+              <option value="basic">Basic - Lights, sensors, plugs</option>
+              <option value="intermediate">Intermediate - + Camera, AC control</option>
+              <option value="advanced">Advanced - + Smart lock, robot vacuum</option>
+            </select>
+          </div>
+
+          <!-- Budget Table -->
+          <div class="comparison-table-wrapper" style="margin-top:1.5rem">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Qty</th>
+                  <th>Unit Price</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="budget-table-body">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Budget Total -->
+          <div style="text-align:center;margin-top:1.5rem">
+            <p style="font-size:1.1rem;margin-bottom:0.25rem">Estimated Total Budget</p>
+            <p style="font-size:2rem;font-weight:800;color:var(--primary-dark);margin-bottom:0.25rem" id="budget-total">--</p>
+            <p style="font-size:1rem;color:var(--text-light)" id="budget-total-usd">--</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Make Smarter Financial Decisions</h2>
+      <p>Explore our tools and guides to optimize your finances and smart home setup in Israel.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="money-transfers.html" class="btn btn-primary btn-lg">Compare Money Transfers &rarr;</a>
+        <a href="smart-home.html" class="btn btn-outline btn-lg">Smart Home Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h4><span style="color:var(--accent)">&#9889;</span> SmartHomeIL</h4>
+          <p>Helping English-speaking Israelis navigate smart home technology, salary calculations, and international money transfers. Independent reviews and practical tools for life in Israel.</p>
+        </div>
+        <div>
+          <h4>Tools</h4>
+          <ul class="footer-links">
+            <li><a href="salary-calculator.html">Salary Calculator</a></li>
+            <li><a href="money-transfers.html">Transfer Comparison</a></li>
+            <li><a href="smart-home.html">Smart Home Guide</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="smart-home.html">Product Reviews</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">Privacy Policy</a></li>
+            <li><a href="about.html">Terms of Use</a></li>
+            <li><a href="about.html">Affiliate Disclosure</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 SmartHomeIL. All rights reserved.</span>
+        <span class="disclaimer">This site contains affiliate links. We may earn a commission at no extra cost to you. Salary calculations are estimates and should not replace professional tax advice.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
