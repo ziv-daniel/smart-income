@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך התחלה לבית חכם בישראל - שלב אחר שלב | בית חכם IL</title>
+  <meta name="description" content="המדריך המלא לבניית בית חכם בישראל. 5 שלבים פשוטים עם מוצרים מאומתים ל-220V. מותאם לדירות בישראל.">
+  <meta name="keywords" content="מדריך בית חכם ישראל, בית חכם למתחילים, Home Assistant ישראל, Zigbee ישראל, מתגים חכמים 220V, Sensibo, חיישנים חכמים">
+  <meta name="author" content="בית חכם IL">
+  <link rel="canonical" href="https://ziv-daniel.github.io/smart-income/starter-guide.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="מדריך התחלה לבית חכם בישראל - שלב אחר שלב">
+  <meta property="og:description" content="המדריך המלא לבניית בית חכם בישראל. 5 שלבים פשוטים עם מוצרים מאומתים ל-220V. מותאם לדירות בישראל.">
+  <meta property="og:url" content="https://ziv-daniel.github.io/smart-income/starter-guide.html">
+  <meta property="og:site_name" content="בית חכם IL">
+  <meta property="og:locale" content="he_IL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="מדריך התחלה לבית חכם בישראל - שלב אחר שלב">
+  <meta name="twitter:description" content="המדריך המלא לבניית בית חכם בישראל. 5 שלבים פשוטים עם מוצרים מאומתים ל-220V.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Inline styles for starter guide specific elements -->
+  <style>
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-header h2 {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .platform-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .platform-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .platform-card.recommended {
+      border: 2px solid var(--accent);
+      position: relative;
+    }
+
+    .platform-card.recommended::before {
+      content: 'המומלץ שלנו';
+      position: absolute;
+      top: -0.75rem;
+      right: 1rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.2rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .platform-card h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1.2rem;
+    }
+
+    .platform-card ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+
+    .platform-card ul li {
+      padding: 0.25rem 0;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .platform-card ul li::before {
+      content: '\2713';
+      color: var(--success);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .platform-card .recommendation {
+      background: var(--accent-glow);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      color: var(--primary-dark);
+      font-weight: 500;
+    }
+
+    .product-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 0.75rem;
+      transition: all var(--transition);
+      flex-wrap: wrap;
+    }
+
+    .product-row:hover {
+      box-shadow: var(--shadow-sm);
+      border-color: var(--accent-light);
+    }
+
+    .product-row .product-emoji {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .product-row .product-info {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .product-row .product-info h4 {
+      margin-bottom: 0.15rem;
+      font-size: 1rem;
+    }
+
+    .product-row .product-info p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .product-row .product-price-tag {
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    .product-row .btn {
+      white-space: nowrap;
+    }
+
+    .tip-box {
+      background: rgba(255, 209, 102, 0.15);
+      border: 1px solid rgba(255, 209, 102, 0.4);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .tip-box strong {
+      color: #b45309;
+    }
+
+    .automation-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+
+    .automation-list li {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      transition: all var(--transition);
+    }
+
+    .automation-list li:hover {
+      border-color: var(--accent-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .summary-table-wrapper {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      margin: 2rem 0;
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      min-width: 450px;
+    }
+
+    .summary-table thead {
+      background: var(--primary-dark);
+    }
+
+    .summary-table th {
+      padding: 1rem 1.2rem;
+      text-align: right;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .summary-table td {
+      padding: 0.85rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .summary-table tbody tr {
+      transition: background var(--transition);
+    }
+
+    .summary-table tbody tr:hover {
+      background: var(--accent-glow);
+    }
+
+    .summary-table tbody tr.total-row {
+      background: var(--primary-dark);
+      color: white;
+      font-weight: 700;
+    }
+
+    .summary-table tbody tr.total-row td {
+      border-bottom: none;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .faq-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+
+    .faq-item:hover {
+      border-color: var(--accent-light);
+    }
+
+    .faq-question {
+      padding: 1.2rem 1.5rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.3rem;
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+
+    .faq-item.open .faq-question::after {
+      content: '\2212';
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem 1.2rem;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .israeli-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(0, 56, 184, 0.1);
+      color: #0038b8;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .overview-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .overview-step {
+      text-align: center;
+      padding: 1.5rem 0.75rem;
+      background: white;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .overview-step:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+      border-color: var(--accent-light);
+    }
+
+    .overview-step .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .overview-step .step-icon {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .overview-step h4 {
+      font-size: 0.9rem;
+      color: var(--primary-dark);
+    }
+
+    @media (max-width: 768px) {
+      .overview-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-row {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: right;
+      }
+
+      .product-row .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .overview-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <!-- Structured Data - FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "האם בית חכם בטוח?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "כן, במיוחד עם Home Assistant שעובד מקומית. המערכת לא תלויה בענן ולא שולחת נתונים לשרתים חיצוניים, מה שמבטיח פרטיות ואבטחה מקסימלית."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "האם צריך חשמלאי להתקנת בית חכם?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "למתגים חכמים שנכנסים בתוך הקיר - כן, מומלץ להשתמש בחשמלאי מוסמך. לשאר המוצרים כמו חיישנים, בקרי מזגן ונורות חכמות - לא צריך חשמלאי, ההתקנה פשוטה."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "מה עם עומס על WiFi בבית חכם?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "רוב המכשירים המומלצים עובדים על פרוטוקול Zigbee שלא עומס על רשת ה-WiFi הביתית. Zigbee יוצר רשת mesh נפרדת ויכול לתמוך במאות מכשירים."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "כמה זמן לוקח להתקין בית חכם?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "חבילה בסיסית עם Home Assistant, מתגים חכמים וחיישנים לוקחת כ-2-3 שעות להתקנה ראשונית. לאחר מכן אפשר להוסיף מכשירים ואוטומציות בהדרגה."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">&#127968;</span>
+        בית חכם<span>IL</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">בית</a></li>
+        <li><a href="smart-home.html">מוצרים</a></li>
+        <li><a href="savings-calculator.html">מחשבון חיסכון</a></li>
+        <li><a href="starter-guide.html" class="active">מדריך התחלה</a></li>
+        <li><a href="about.html">אודות</a></li>
+      </ul>
+      <button class="mobile-toggle" aria-label="פתיחת תפריט ניווט">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== Page Hero ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-badges" style="margin-bottom: 1.5rem;">
+        <span class="hero-badge">&#128218; מדריך מלא שלב אחר שלב</span>
+        <span class="hero-badge">&#127470;&#127473; מותאם לדירות בישראל</span>
+        <span class="hero-badge">&#9889; מאומת ל-220V</span>
+      </div>
+      <h1>מדריך התחלה לבית חכם בישראל</h1>
+      <p>המדריך המלא לבניית בית חכם שלב אחר שלב. מותאם לחשמל 220V ולדירות בישראל.</p>
+    </div>
+  </section>
+
+  <!-- ===== Breadcrumb ===== -->
+  <div class="breadcrumb">
+    <div class="container">
+      <a href="index.html">בית</a>
+      <span>&gt;</span>
+      <span class="current">מדריך התחלה</span>
+    </div>
+  </div>
+
+  <!-- ===== Overview: 5 Steps ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>5 שלבים לבית חכם בישראל</h2>
+        <p>לא צריך להיות מהנדס. עם המדריך הזה תוכלו להפוך כל דירה בישראל לבית חכם בתקציב סביר.</p>
+      </div>
+
+      <div class="overview-steps">
+        <div class="overview-step">
+          <span class="step-num">1</span>
+          <span class="step-icon">&#128187;</span>
+          <h4>בחירת פלטפורמה</h4>
+        </div>
+        <div class="overview-step">
+          <span class="step-num">2</span>
+          <span class="step-icon">&#128225;</span>
+          <h4>התקנת האב</h4>
+        </div>
+        <div class="overview-step">
+          <span class="step-num">3</span>
+          <span class="step-icon">&#128161;</span>
+          <h4>תאורה חכמה</h4>
+        </div>
+        <div class="overview-step">
+          <span class="step-num">4</span>
+          <span class="step-icon">&#10052;&#65039;</span>
+          <h4>מזגן חכם</h4>
+        </div>
+        <div class="overview-step">
+          <span class="step-num">5</span>
+          <span class="step-icon">&#128270;</span>
+          <h4>חיישנים ואוטומציה</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Step 1: Choose Your Platform ===== -->
+  <section class="content-section section-alt" id="step-1">
+    <div class="container">
+      <div class="step-header">
+        <span class="step-number">1</span>
+        <h2>שלב 1: בחירת פלטפורמה</h2>
+      </div>
+      <p>הצעד הראשון הוא לבחור את הפלטפורמה שתנהל את הבית החכם. הנה 3 האפשרויות המובילות:</p>
+
+      <div class="grid grid-3 mt-4">
+
+        <!-- Home Assistant -->
+        <div class="platform-card recommended">
+          <h3>&#127968; Home Assistant</h3>
+          <ul>
+            <li>חינמי וקוד פתוח</li>
+            <li>שליטה מקומית (ללא ענן)</li>
+            <li>תואם לאלפי מכשירים</li>
+            <li>דורש Raspberry Pi או מיני מחשב</li>
+          </ul>
+          <div class="recommendation">מומלץ למי שרוצה שליטה מלאה ופרטיות</div>
+        </div>
+
+        <!-- Google Home -->
+        <div class="platform-card">
+          <h3>&#128264; Google Home</h3>
+          <ul>
+            <li>קל לשימוש</li>
+            <li>עובד עם Google Assistant בעברית</li>
+            <li>דורש חיבור לענן</li>
+            <li>תלוי בשרתי Google</li>
+          </ul>
+          <div class="recommendation">מומלץ למשתמשים שרוצים פשטות</div>
+        </div>
+
+        <!-- Apple HomeKit -->
+        <div class="platform-card">
+          <h3>&#127822; Apple HomeKit</h3>
+          <ul>
+            <li>אבטחה מעולה</li>
+            <li>עובד רק עם מוצרי Apple</li>
+            <li>בחירה מוגבלת של מכשירים</li>
+            <li>ממשק נקי ופשוט</li>
+          </ul>
+          <div class="recommendation">מומלץ למשתמשי Apple</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Step 2: Set Up a Hub ===== -->
+  <section class="content-section" id="step-2">
+    <div class="container">
+      <div class="step-header">
+        <span class="step-number">2</span>
+        <h2>שלב 2: התקנת האב (Hub)</h2>
+      </div>
+      <p>ההאב הוא ה"מוח" של הבית החכם. הוא מחבר את כל המכשירים.</p>
+
+      <h3 class="mt-3">למשתמשי Home Assistant:</h3>
+
+      <div class="product-row">
+        <span class="product-emoji">&#128225;</span>
+        <div class="product-info">
+          <h4>Sonoff ZBDongle-P</h4>
+          <p>קואורדינטור Zigbee מומלץ. פשוט, אמין ובמחיר משתלם.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;55</span>
+        <a href="https://www.aliexpress.com/w/wholesale-sonoff-zbdongle-p.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-sm"
+           data-affiliate="aliexpress"
+           data-category="hub">
+          לרכישה &#8592;
+        </a>
+      </div>
+
+      <div class="product-row">
+        <span class="product-emoji">&#128225;</span>
+        <div class="product-info">
+          <h4>Home Assistant SkyConnect</h4>
+          <p>Zigbee + Thread - תמיכה בפרוטוקולים המתקדמים ביותר.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;110</span>
+        <a href="https://www.aliexpress.com/w/wholesale-home-assistant-skyconnect.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-sm"
+           data-affiliate="aliexpress"
+           data-category="hub">
+          לרכישה &#8592;
+        </a>
+      </div>
+
+      <div class="product-row">
+        <span class="product-emoji">&#128421;</span>
+        <div class="product-info">
+          <h4>Raspberry Pi 4/5</h4>
+          <p>המחשב שמריץ את Home Assistant. קומפקטי, חסכוני בחשמל ועוצמתי.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;300-450</span>
+        <a href="https://www.aliexpress.com/w/wholesale-raspberry-pi-5.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-sm"
+           data-affiliate="aliexpress"
+           data-category="hub">
+          לרכישה &#8592;
+        </a>
+      </div>
+
+      <div class="affiliate-cta mt-3">
+        <div class="cta-text">
+          <h4>&#128295; חבילת התחלה מומלצת: Raspberry Pi + ZBDongle-P</h4>
+          <p>הכל מה שצריך כדי להתחיל עם Home Assistant. פשוט לחבר ולהתקין.</p>
+        </div>
+        <a href="https://www.aliexpress.com/w/wholesale-raspberry-pi-zigbee.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary"
+           data-affiliate="aliexpress"
+           data-category="hub">
+          לרכישה באליאקספרס &#8592;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Step 3: Smart Lighting ===== -->
+  <section class="content-section section-alt" id="step-3">
+    <div class="container">
+      <div class="step-header">
+        <span class="step-number">3</span>
+        <h2>שלב 3: תאורה חכמה</h2>
+      </div>
+      <p>תאורה היא הצעד הראשון והקל ביותר. תוצאות מיידיות עם השקעה נמוכה.</p>
+
+      <h3 class="mt-3">מתגים חכמים (מומלץ לישראל)</h3>
+
+      <div class="product-row">
+        <span class="product-emoji">&#128161;</span>
+        <div class="product-info">
+          <h4>Sonoff ZBMINI-L2</h4>
+          <p>לא צריך נייטרל, מושלם לדירות ישנות. Zigbee 3.0, נכנס לקופסת חשמל ישראלית.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;40</span>
+        <a href="https://www.aliexpress.com/w/wholesale-sonoff-zbmini-l2.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-sm"
+           data-affiliate="aliexpress"
+           data-category="lighting">
+          לרכישה &#8592;
+        </a>
+      </div>
+
+      <div class="product-row">
+        <span class="product-emoji">&#128161;</span>
+        <div class="product-info">
+          <h4>Aqara Wall Switch H1</h4>
+          <p>מתג קיר יפה ואמין. עיצוב מודרני ותמיכה מלאה ב-Home Assistant.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;90</span>
+        <a href="https://www.aliexpress.com/w/wholesale-aqara-wall-switch-h1.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-sm"
+           data-affiliate="aliexpress"
+           data-category="lighting">
+          לרכישה &#8592;
+        </a>
+      </div>
+
+      <div class="tip-box">
+        <strong>&#128161; טיפ:</strong> מתגים חכמים עדיפים על נורות חכמות בישראל כי הם עובדים עם כל נורה ולא צריך להחליף נורות. בנוסף, מי שמכבה את המתג הפיזי לא מנתק את הנורה החכמה.
+      </div>
+
+      <h3 class="mt-3">נורות חכמות</h3>
+
+      <div class="product-row">
+        <span class="product-emoji">&#128161;</span>
+        <div class="product-info">
+          <h4>IKEA TRADFRI</h4>
+          <p>זמין בחנויות IKEA ישראל. מחיר נוח ואמינות סבירה.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;50/נורה</span>
+      </div>
+
+      <div class="product-row">
+        <span class="product-emoji">&#128161;</span>
+        <div class="product-info">
+          <h4>Philips Hue</h4>
+          <p>הכי אמין בשוק. מגוון צבעים רחב, אקוסיסטם עשיר, אבל יקר יותר.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;120/נורה</span>
+      </div>
+
+      <div class="affiliate-cta mt-3">
+        <div class="cta-text">
+          <h4>&#128161; קנה מתגים חכמים באליאקספרס</h4>
+          <p>מתגים חכמים במחירים הטובים ביותר. משלוח ישיר לישראל.</p>
+        </div>
+        <a href="https://www.aliexpress.com/w/wholesale-zigbee-smart-switch.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary"
+           data-affiliate="aliexpress"
+           data-category="lighting">
+          צפה בדילים &#8592;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Step 4: Smart AC ===== -->
+  <section class="content-section" id="step-4">
+    <div class="container">
+      <div class="step-header">
+        <span class="step-number">4</span>
+        <h2>שלב 4: מזגן חכם</h2>
+      </div>
+      <p>בישראל, מזגן חכם הוא חובה. הוא חוסך כסף ומגביר נוחות.</p>
+
+      <h3 class="mt-3">ההמלצה המובילה</h3>
+
+      <div class="product-row" style="border: 2px solid var(--accent); background: var(--accent-glow);">
+        <span class="product-emoji">&#10052;&#65039;</span>
+        <div class="product-info">
+          <h4>Sensibo Air <span class="israeli-badge">&#127470;&#127473; חברה ישראלית</span></h4>
+          <p>עובד עם כל מזגן עם שלט, אפליקציה בעברית, אחריות מקומית. חוסך 15-25% על חשבון חשמל.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;330</span>
+        <a href="https://sensibo.com"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-sm"
+           data-affiliate="sensibo"
+           data-category="ac">
+          לאתר Sensibo &#8592;
+        </a>
+      </div>
+
+      <h3 class="mt-3">חלופות נוספות</h3>
+
+      <div class="product-row">
+        <span class="product-emoji">&#10052;&#65039;</span>
+        <div class="product-info">
+          <h4>SwitchBot Hub 2</h4>
+          <p>אלטרנטיבה זולה יותר. כולל חיישן טמפרטורה ולחות, תומך IR ו-Matter.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;220</span>
+        <a href="https://www.aliexpress.com/w/wholesale-switchbot-hub-2.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-sm"
+           data-affiliate="aliexpress"
+           data-category="ac">
+          לרכישה &#8592;
+        </a>
+      </div>
+
+      <div class="product-row">
+        <span class="product-emoji">&#10052;&#65039;</span>
+        <div class="product-info">
+          <h4>Broadlink RM4 Pro</h4>
+          <p>הכי זול. שולט על מזגן, טלוויזיה ומכשירי IR נוספים.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;150</span>
+        <a href="https://www.aliexpress.com/w/wholesale-broadlink-rm4-pro.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-sm"
+           data-affiliate="aliexpress"
+           data-category="ac">
+          לרכישה &#8592;
+        </a>
+      </div>
+
+      <div class="affiliate-cta mt-3">
+        <div class="cta-text">
+          <h4>&#10052;&#65039; קנה Sensibo ותתחיל לחסוך</h4>
+          <p>חברה ישראלית, אפליקציה בעברית, חיסכון של 15-25% בחשמל.</p>
+        </div>
+        <a href="https://sensibo.com"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary"
+           data-affiliate="sensibo"
+           data-category="ac">
+          לאתר Sensibo &#8592;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Step 5: Sensors & Automation ===== -->
+  <section class="content-section section-alt" id="step-5">
+    <div class="container">
+      <div class="step-header">
+        <span class="step-number">5</span>
+        <h2>שלב 5: חיישנים ואוטומציה</h2>
+      </div>
+      <p>זה השלב שהופך בית רגיל לבית חכם באמת. חיישנים + אוטומציה = קסם.</p>
+
+      <h3 class="mt-3">חיישנים חיוניים</h3>
+
+      <div class="product-row">
+        <span class="product-emoji">&#128065;</span>
+        <div class="product-info">
+          <h4>חיישן תנועה Aqara P1</h4>
+          <p>להדלקת אור אוטומטית. זווית רחבה, תגובה מהירה, Zigbee 3.0.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;90</span>
+        <a href="https://www.aliexpress.com/w/wholesale-aqara-motion-sensor-p1.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-sm"
+           data-affiliate="aliexpress"
+           data-category="sensors">
+          לרכישה &#8592;
+        </a>
+      </div>
+
+      <div class="product-row">
+        <span class="product-emoji">&#128682;</span>
+        <div class="product-info">
+          <h4>חיישן דלת/חלון Aqara</h4>
+          <p>לכיבוי מזגן כשנפתח חלון. קטן, אמין ועם סוללה שמחזיקה שנתיים.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;45</span>
+        <a href="https://www.aliexpress.com/w/wholesale-aqara-door-sensor.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-sm"
+           data-affiliate="aliexpress"
+           data-category="sensors">
+          לרכישה &#8592;
+        </a>
+      </div>
+
+      <div class="product-row">
+        <span class="product-emoji">&#127777;&#65039;</span>
+        <div class="product-info">
+          <h4>חיישן טמפרטורה Sonoff SNZB-02D</h4>
+          <p>לניטור טמפרטורה ולחות. מסך e-ink מובנה לתצוגה נוחה.</p>
+        </div>
+        <span class="product-price-tag">~&#8362;35</span>
+        <a href="https://www.aliexpress.com/w/wholesale-sonoff-snzb-02d.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-sm"
+           data-affiliate="aliexpress"
+           data-category="sensors">
+          לרכישה &#8592;
+        </a>
+      </div>
+
+      <h3 class="mt-4">דוגמאות לאוטומציות</h3>
+
+      <ul class="automation-list">
+        <li>&#128161; כשנכנסים לחדר &#8594; נדלק אור (חיישן תנועה)</li>
+        <li>&#10052;&#65039; כשנפתח חלון &#8594; נכבה מזגן (חיישן דלת)</li>
+        <li>&#127769; ב-23:00 &#8594; כל האורות נכבים (לפי לוח זמנים)</li>
+        <li>&#127968; כשיוצאים מהבית &#8594; הכל נכבה (לפי מיקום טלפון)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Summary: Recommended Starter Kit ===== -->
+  <section class="section" id="summary">
+    <div class="container">
+      <div class="section-header">
+        <h2>סיכום: חבילת התחלה מומלצת</h2>
+      </div>
+
+      <div class="summary-table-wrapper">
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th>מוצר</th>
+              <th>מחיר</th>
+              <th>קטגוריה</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Raspberry Pi 4</td>
+              <td>~&#8362;350</td>
+              <td>פלטפורמה</td>
+            </tr>
+            <tr>
+              <td>Sonoff ZBDongle-P</td>
+              <td>~&#8362;55</td>
+              <td>האב</td>
+            </tr>
+            <tr>
+              <td>Sonoff ZBMINI-L2 x3</td>
+              <td>~&#8362;120</td>
+              <td>תאורה</td>
+            </tr>
+            <tr>
+              <td>Sensibo Air</td>
+              <td>~&#8362;330</td>
+              <td>מזגן</td>
+            </tr>
+            <tr>
+              <td>Aqara Motion Sensor</td>
+              <td>~&#8362;90</td>
+              <td>חיישן</td>
+            </tr>
+            <tr>
+              <td>Aqara Door Sensor</td>
+              <td>~&#8362;45</td>
+              <td>חיישן</td>
+            </tr>
+            <tr class="total-row">
+              <td><strong>סה"כ</strong></td>
+              <td><strong>~&#8362;990</strong></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-center" style="font-size: 1.1rem; color: var(--primary-dark); font-weight: 600;">
+        בפחות מ-&#8362;1,000 אפשר להתחיל עם בית חכם אמיתי שחוסך כסף מהיום הראשון.
+      </p>
+
+      <div class="text-center mt-4">
+        <a href="https://www.aliexpress.com/w/wholesale-smart-home-zigbee-starter-kit.html"
+           target="_blank"
+           rel="noopener noreferrer sponsored"
+           class="btn btn-primary btn-lg"
+           data-affiliate="aliexpress"
+           data-category="starter-kit">
+          &#128722; קנה את חבילת ההתחלה באליאקספרס &#8592;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ Section ===== -->
+  <section class="section section-alt" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>שאלות נפוצות</h2>
+      </div>
+
+      <div class="faq-item open">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span>האם בית חכם בטוח?</span>
+        </div>
+        <div class="faq-answer">
+          <p>כן, במיוחד עם Home Assistant שעובד מקומית. המערכת לא תלויה בענן ולא שולחת נתונים לשרתים חיצוניים, מה שמבטיח פרטיות ואבטחה מקסימלית. גם אם האינטרנט נופל, הבית החכם ממשיך לעבוד.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span>האם צריך חשמלאי?</span>
+        </div>
+        <div class="faq-answer">
+          <p>למתגים בתוך הקיר - כן, מומלץ להשתמש בחשמלאי מוסמך. לשאר המוצרים כמו חיישנים, בקרי מזגן ונורות חכמות - לא צריך חשמלאי, ההתקנה פשוטה ולוקחת דקות ספורות.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span>מה עם WiFi?</span>
+        </div>
+        <div class="faq-answer">
+          <p>רוב המכשירים המומלצים במדריך עובדים על פרוטוקול Zigbee שלא עומס על רשת ה-WiFi הביתית. Zigbee יוצר רשת mesh נפרדת ויכול לתמוך במאות מכשירים ללא השפעה על מהירות האינטרנט.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span>כמה זמן לוקח להתקין?</span>
+        </div>
+        <div class="faq-answer">
+          <p>חבילה בסיסית עם Home Assistant, מתגים חכמים וחיישנים לוקחת כ-2-3 שעות להתקנה ראשונית. לאחר מכן אפשר להוסיף מכשירים ואוטומציות בהדרגה, כל מכשיר נוסף לוקח כ-5-10 דקות.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA Section ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>מוכנים להתחיל?</h2>
+      <p>עברו על המוצרים המומלצים שלנו ובנו את הבית החכם שלכם היום.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="smart-home.html" class="btn btn-primary btn-lg">צפה בכל המוצרים &#8592;</a>
+        <a href="savings-calculator.html" class="btn btn-outline btn-lg">חשב כמה תחסוך</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- About Column -->
+        <div class="footer-about">
+          <h4>&#127968; בית חכם IL</h4>
+          <p>המדריך שלך למוצרי בית חכם בישראל. כל מוצר נבדק על חשמל 220V ישראלי ומאומת לתאימות עם Home Assistant.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4>קישורים מהירים</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">בית</a></li>
+            <li><a href="smart-home.html">מוצרים</a></li>
+            <li><a href="savings-calculator.html">מחשבון חיסכון</a></li>
+            <li><a href="starter-guide.html">מדריך התחלה</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div>
+          <h4>משאבים</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">אודות</a></li>
+            <li><a href="about.html#contact">צור קשר</a></li>
+            <li><a href="about.html#privacy">מדיניות פרטיות</a></li>
+            <li><a href="about.html#terms">תנאי שימוש</a></li>
+          </ul>
+        </div>
+
+        <!-- Guides -->
+        <div>
+          <h4>מדריכים פופולריים</h4>
+          <ul class="footer-links">
+            <li><a href="starter-guide.html#step-1">בחירת פלטפורמה</a></li>
+            <li><a href="starter-guide.html#step-3">תאורה חכמה</a></li>
+            <li><a href="starter-guide.html#step-4">מזגן חכם</a></li>
+            <li><a href="starter-guide.html#step-5">חיישנים ואוטומציה</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 בית חכם IL. כל הזכויות שמורות.</p>
+        <p class="disclaimer">גילוי נאות: חלק מהקישורים באתר הם קישורי שותפים. אנו עשויים לקבל עמלה קטנה אם תרכשו דרכם, ללא עלות נוספת עבורכם. הדבר מסייע לתחזוקת האתר ומאפשר לנו להמשיך לבדוק מוצרים. כל הדעות הן שלנו ומבוססות על בדיקות אמיתיות.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>

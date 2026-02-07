@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מחשבון חיסכון בית חכם - כמה תחסכו? | בית חכם IL</title>
+  <meta name="description" content="חשבו כמה כסף תחסכו עם מוצרי בית חכם בישראל. מחשבון חיסכון אנרגיה ותקציב לבית חכם.">
+  <meta name="keywords" content="חיסכון בית חכם, מחשבון חיסכון אנרגיה, תקציב בית חכם, חיסכון חשמל ישראל, מוצרים חכמים חיסכון">
+  <meta name="author" content="בית חכם IL">
+  <link rel="canonical" href="https://ziv-daniel.github.io/smart-income/savings-calculator.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="מחשבון חיסכון בית חכם - כמה תחסכו? | בית חכם IL">
+  <meta property="og:description" content="חשבו כמה כסף תחסכו עם מוצרי בית חכם בישראל. מחשבון חיסכון אנרגיה ותקציב לבית חכם.">
+  <meta property="og:url" content="https://ziv-daniel.github.io/smart-income/savings-calculator.html">
+  <meta property="og:site_name" content="בית חכם IL">
+  <meta property="og:locale" content="he_IL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="מחשבון חיסכון בית חכם - כמה תחסכו? | בית חכם IL">
+  <meta name="twitter:description" content="חשבו כמה כסף תחסכו עם מוצרי בית חכם בישראל. מחשבון חיסכון אנרגיה ותקציב לבית חכם.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "מחשבון חיסכון בית חכם",
+    "url": "https://ziv-daniel.github.io/smart-income/savings-calculator.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "description": "חשבו כמה כסף תחסכו עם מוצרי בית חכם בישראל. מחשבון חיסכון אנרגיה ותקציב לבית חכם.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "ILS"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "בית חכם IL",
+      "url": "https://ziv-daniel.github.io/smart-income/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">&#127968;</span>
+        בית חכם<span>IL</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">בית</a></li>
+        <li><a href="smart-home.html">מוצרים</a></li>
+        <li><a href="savings-calculator.html" class="active">מחשבון חיסכון</a></li>
+        <li><a href="starter-guide.html">מדריך התחלה</a></li>
+        <li><a href="about.html">אודות</a></li>
+      </ul>
+      <button class="mobile-toggle" aria-label="פתיחת תפריט ניווט">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== Page Hero ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>מחשבון חיסכון ותקציב לבית חכם</h1>
+      <p>גלו כמה כסף תחסכו עם בית חכם וחשבו תקציב מותאם לביתכם</p>
+    </div>
+  </section>
+
+  <!-- ===== Breadcrumb ===== -->
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">בית</a>
+      <span>&gt;</span>
+      <span class="current">מחשבון חיסכון</span>
+    </div>
+  </div>
+
+  <!-- ===== Section 1: Energy Savings Calculator ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>מחשבון חיסכון אנרגיה</h2>
+        <p>הזינו את פרטי הבית שלכם וגלו כמה תחסכו עם מוצרי בית חכם בחשבון החשמל.</p>
+      </div>
+
+      <div class="calculator-container">
+        <div class="calc-card">
+          <h3 style="margin-bottom:1.5rem;text-align:center">חשבו את החיסכון שלכם</h3>
+
+          <form id="savings-form" onsubmit="return false">
+
+            <!-- Monthly Electricity Bill -->
+            <div class="form-group">
+              <label for="electricity-bill">חשבון חשמל חודשי ממוצע (&#8362;)</label>
+              <input type="number" id="electricity-bill" class="form-input" value="450" min="0" step="10" placeholder="לדוגמה: 450">
+            </div>
+
+            <div class="form-row">
+              <!-- Number of ACs -->
+              <div class="form-group">
+                <label for="num-ac">מספר מזגנים בבית</label>
+                <input type="number" id="num-ac" class="form-input" value="2" min="0" max="10" step="1">
+              </div>
+
+              <!-- Number of Rooms with Lighting -->
+              <div class="form-group">
+                <label for="num-lights">מספר חדרים עם תאורה</label>
+                <input type="number" id="num-lights" class="form-input" value="4" min="1" max="12" step="1">
+              </div>
+            </div>
+
+            <!-- Electric Boiler -->
+            <div class="form-group" style="display:flex;align-items:center;gap:0.75rem">
+              <input type="checkbox" id="has-boiler" style="width:20px;height:20px;cursor:pointer;accent-color:var(--accent)">
+              <label for="has-boiler" style="margin-bottom:0;cursor:pointer">
+                האם יש דוד שמש חשמלי?
+              </label>
+            </div>
+
+            <!-- Calculate Button -->
+            <button type="button" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:0.5rem" onclick="calculateSavings()">
+              חשב חיסכון
+            </button>
+          </form>
+
+          <!-- Savings Results -->
+          <div id="savings-results" class="hidden">
+            <div class="calc-result">
+              <h3>חיסכון שנתי מוערך</h3>
+
+              <div class="result-grid">
+                <div class="result-item">
+                  <div class="result-label">חיסכון מזגנים חכמים</div>
+                  <div class="result-value" id="save-ac">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">חיסכון תאורה חכמה</div>
+                  <div class="result-value" id="save-lights">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">חיסכון דוד חכם</div>
+                  <div class="result-value" id="save-boiler">--</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">חיסכון שנתי מוערך</div>
+                  <div class="result-value highlight-value" id="save-total">--</div>
+                </div>
+                <div class="result-item" style="grid-column: 1 / -1">
+                  <div class="result-label">החזר השקעה</div>
+                  <div class="result-value highlight-value" id="save-roi">--</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recommendation Box -->
+            <div class="affiliate-cta" style="margin-top:2rem">
+              <div class="cta-text">
+                <h4>&#128161; להתחיל לחסוך עכשיו</h4>
+                <p>המוצרים המומלצים לחיסכון מיידי בחשבון החשמל:</p>
+                <ul style="list-style:none;padding:0;margin:0.75rem 0 0">
+                  <li style="margin-bottom:0.5rem">
+                    <a href="https://sensibo.com" target="_blank" rel="noopener noreferrer sponsored" data-affiliate="sensibo" data-category="savings" style="font-weight:600">
+                      &#10052;&#65039; Sensibo Air לחיסכון במזגנים &#8592;
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.aliexpress.com/w/wholesale-sonoff-zbmini-l2.html" target="_blank" rel="noopener noreferrer sponsored" data-affiliate="aliexpress" data-category="savings" style="font-weight:600">
+                      &#128161; Sonoff ZBMINI-L2 לתאורה חכמה &#8592;
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 2: Smart Home Budget Calculator ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>מחשבון תקציב בית חכם</h2>
+        <p>מתכננים לאוטמט את הבית שלכם בישראל? העריכו את העלות לפי מספר החדרים ורמת האוטומציה הרצויה.</p>
+      </div>
+
+      <div class="calculator-container">
+        <div class="calc-card" id="budget-form">
+          <h3 style="margin-bottom:1.5rem;text-align:center">העריכו את תקציב הבית החכם שלכם</h3>
+
+          <!-- Number of Rooms -->
+          <div class="form-group">
+            <label for="num-rooms">מספר חדרים: <strong id="rooms-display">3</strong></label>
+            <input type="range" id="num-rooms" class="form-input" min="1" max="8" value="3" step="1" oninput="document.getElementById('rooms-display').textContent=this.value">
+          </div>
+
+          <!-- Automation Level -->
+          <div class="form-group">
+            <label for="automation-level">רמת אוטומציה</label>
+            <select id="automation-level" class="form-input form-select">
+              <option value="basic">בסיסי - תאורה, חיישנים, שקעים חכמים</option>
+              <option value="intermediate">בינוני - + מצלמה, שליטה במזגן</option>
+              <option value="advanced">מתקדם - + מנעול חכם, שואב רובוטי</option>
+            </select>
+          </div>
+
+          <!-- Budget Table -->
+          <div class="comparison-table-wrapper" style="margin-top:1.5rem">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>פריט</th>
+                  <th>כמות</th>
+                  <th>מחיר ליחידה</th>
+                  <th>סה"כ</th>
+                </tr>
+              </thead>
+              <tbody id="budget-table-body">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Budget Total -->
+          <div style="text-align:center;margin-top:1.5rem">
+            <p style="font-size:1.1rem;margin-bottom:0.25rem">תקציב משוער כולל</p>
+            <p style="font-size:2rem;font-weight:800;color:var(--primary-dark);margin-bottom:0.25rem" id="budget-total">--</p>
+            <p style="font-size:1rem;color:var(--text-light)" id="budget-total-usd">--</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AliExpress CTA -->
+      <div class="affiliate-cta" style="margin-top:2rem">
+        <div class="cta-text">
+          <h4>&#128722; היכן לקנות?</h4>
+          <p>רוב המוצרים זמינים ב-AliExpress עם משלוח חינם לישראל</p>
+        </div>
+        <a href="https://www.aliexpress.com/w/wholesale-smart-home.html" target="_blank" rel="noopener noreferrer sponsored" class="btn btn-primary" data-affiliate="aliexpress-budget" data-category="smart-home">
+          קנה ב-AliExpress &#8592;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 3: Why Smart Home Saves Money ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="content-section">
+        <h2>למה בית חכם חוסך כסף?</h2>
+
+        <h3>&#10052;&#65039; מזגנים חכמים</h3>
+        <p>שלטי מזגן חכמים כמו Sensibo מזהים מתי אתם עוזבים את הבית ומכבים את המזגן אוטומטית. משפחה ישראלית ממוצעת מוציאה מעל &#8362;3,000 בשנה על מיזוג אוויר. שלט חכם חוסך 15-25% מעלות המיזוג - כלומר חיסכון של &#8362;450 עד &#8362;750 בשנה. בנוסף, ניתן לתזמן הפעלה וכיבוי לפי לוח זמנים, לשלוט מרחוק ולהגדיר טמפרטורה אופטימלית שחוסכת אנרגיה.</p>
+
+        <h3>&#128161; תאורה חכמה</h3>
+        <p>מתגים חכמים עם חיישני תנועה ולוחות זמנים מונעים מצב שבו האורות נשארים דלוקים כשאין צורך. נורות שנשכחות דלוקות הן בזבוז אנרגיה נפוץ. תאורה חכמה חוסכת 20-30% מעלויות התאורה בבית. עם מתגי Zigbee כמו Sonoff ZBMINI-L2 (בעלות של כ-&#8362;40 בלבד למתג), ניתן להפוך כל מתג קיים לחכם ולהתחיל לחסוך מיד.</p>
+
+        <h3>&#9832; דוד חשמלי חכם</h3>
+        <p>טיימרים חכמים לדוד חשמלי מייעלים את לוח הזמנים של חימום המים. במקום שהדוד יעבוד ברציפות או לפי שעון מכני לא מדויק, מתג חכם מפעיל אותו רק כשצריך. חיסכון ממוצע של כ-&#8362;500 בשנה. מוצרים כמו Shelly Plus 1 מתאימים מצוין למשימה הזו ועולים כ-&#8362;50 בלבד.</p>
+
+        <h3>&#128101; חיישני נוכחות</h3>
+        <p>חיישני נוכחות מכבים אוטומטית מכשירים כשחדרים ריקים. מזגן שעובד בחדר ריק, אורות שדולקים ללא סיבה - חיישני תנועה ונוכחות פותרים את הבעיה. בשילוב עם מערכת בית חכם כמו Home Assistant, ניתן ליצור אוטומציות שמכבות הכל כשיוצאים מהבית ומפעילות הכל כשחוזרים.</p>
+
+        <h2>המוצרים שחוסכים הכי הרבה</h2>
+      </div>
+
+      <div class="grid grid-3">
+
+        <!-- Sensibo Air -->
+        <div class="product-card featured">
+          <div class="product-image">&#10052;&#65039;</div>
+          <div class="product-body">
+            <span class="badge badge-israeli">חברה ישראלית</span>
+            <h3>Sensibo Air</h3>
+            <p class="product-brand">שלט חכם למזגן</p>
+            <ul class="product-features">
+              <li>חוסך עד &#8362;750 בשנה על מזגנים</li>
+              <li>מזהה מתי אתם עוזבים ומכבה אוטומטית</li>
+              <li>שליטה מרחוק מהנייד</li>
+              <li>עובד עם Home Assistant</li>
+            </ul>
+            <div class="product-footer">
+              <div class="product-price">
+                ~&#8362;330
+                <small>בדקו מחיר עדכני</small>
+              </div>
+              <a href="https://sensibo.com"
+                 target="_blank"
+                 rel="noopener noreferrer sponsored"
+                 class="btn btn-primary btn-sm"
+                 data-affiliate="sensibo-savings"
+                 data-category="savings">
+                קנה עכשיו &#8592;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sonoff ZBMINI-L2 -->
+        <div class="product-card">
+          <div class="product-image">&#128161;</div>
+          <div class="product-body">
+            <span class="badge badge-success">ללא צורך בנייטרל</span>
+            <h3>Sonoff ZBMINI-L2</h3>
+            <p class="product-brand">מתג חכם Zigbee</p>
+            <ul class="product-features">
+              <li>חוסך על תאורה, &#8362;40 בלבד למתג</li>
+              <li>לא צריך חוט נייטרל</li>
+              <li>נכנס לקופסת חשמל ישראלית</li>
+              <li>פרוטוקול Zigbee 3.0</li>
+            </ul>
+            <div class="product-footer">
+              <div class="product-price">
+                ~&#8362;40
+                <small>בדקו מחיר עדכני</small>
+              </div>
+              <a href="https://www.aliexpress.com/w/wholesale-sonoff-zbmini-l2.html"
+                 target="_blank"
+                 rel="noopener noreferrer sponsored"
+                 class="btn btn-primary btn-sm"
+                 data-affiliate="sonoff-zbmini-l2-savings"
+                 data-category="savings">
+                קנה עכשיו &#8592;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shelly Plus 1 -->
+        <div class="product-card">
+          <div class="product-image">&#9832;</div>
+          <div class="product-body">
+            <span class="badge badge-accent">הכי משתלם</span>
+            <h3>Shelly Plus 1</h3>
+            <p class="product-brand">מתג חכם WiFi</p>
+            <ul class="product-features">
+              <li>חוסך על דוד חשמלי ומכשירים אחרים</li>
+              <li>WiFi מובנה, ללא Hub</li>
+              <li>עובד עם Home Assistant</li>
+              <li>תומך בטיימרים ואוטומציות</li>
+            </ul>
+            <div class="product-footer">
+              <div class="product-price">
+                ~&#8362;50
+                <small>בדקו מחיר עדכני</small>
+              </div>
+              <a href="https://www.aliexpress.com/w/wholesale-shelly-plus-1.html"
+                 target="_blank"
+                 rel="noopener noreferrer sponsored"
+                 class="btn btn-primary btn-sm"
+                 data-affiliate="shelly-plus1-savings"
+                 data-category="savings">
+                קנה עכשיו &#8592;
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- About Column -->
+        <div class="footer-about">
+          <h4>&#127968; בית חכם IL</h4>
+          <p>המדריך שלך למוצרי בית חכם בישראל. גלו כמה תחסכו עם בית חכם, תכננו תקציב והתחילו לאוטמט את הבית שלכם עם מוצרים מאומתים ל-220V ישראלי.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4>קישורים מהירים</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">בית</a></li>
+            <li><a href="smart-home.html">מוצרים</a></li>
+            <li><a href="savings-calculator.html">מחשבון חיסכון</a></li>
+            <li><a href="starter-guide.html">מדריך התחלה</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div>
+          <h4>משאבים</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">אודות</a></li>
+            <li><a href="about.html#contact">צור קשר</a></li>
+            <li><a href="about.html#privacy">מדיניות פרטיות</a></li>
+            <li><a href="about.html#terms">תנאי שימוש</a></li>
+          </ul>
+        </div>
+
+        <!-- Smart Home -->
+        <div>
+          <h4>מדריכים פופולריים</h4>
+          <ul class="footer-links">
+            <li><a href="smart-home.html#zigbee">מכשירי Zigbee</a></li>
+            <li><a href="smart-home.html#ac">שליטה חכמה במזגן</a></li>
+            <li><a href="smart-home.html#lighting">תאורה חכמה</a></li>
+            <li><a href="smart-home.html#vacuums">שואבים רובוטיים</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 בית חכם IL. כל הזכויות שמורות.</p>
+        <p class="disclaimer">גילוי נאות: חלק מהקישורים באתר הם קישורי שותפים. אנו עשויים לקבל עמלה קטנה אם תרכשו דרכם, ללא עלות נוספת עבורכם. הדבר מסייע לתחזוקת האתר ומאפשר לנו להמשיך לבדוק מוצרים. כל הדעות הן שלנו ומבוססות על בדיקות אמיתיות.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+
+  <!-- Savings Calculator Logic -->
+  <script>
+  function calculateSavings() {
+    var bill = parseFloat(document.getElementById('electricity-bill').value) || 0;
+    var numAc = parseInt(document.getElementById('num-ac').value) || 0;
+    var numLights = parseInt(document.getElementById('num-lights').value) || 0;
+    var hasBoiler = document.getElementById('has-boiler').checked;
+
+    // AC typically accounts for ~40% of electricity bill in Israel
+    var acBillShare = bill * 0.40;
+    // Per AC savings: smart controller saves 15-25%, use 20% average
+    var acSavingsMonthly = numAc > 0 ? (acBillShare * 0.20) : 0;
+    var acSavingsAnnual = Math.round(acSavingsMonthly * 12);
+
+    // Lighting accounts for ~15% of electricity bill
+    var lightBillShare = bill * 0.15;
+    // Smart lighting saves 20-30%, use 25% average, scaled by rooms
+    var lightFactor = Math.min(numLights / 5, 1); // normalize around 5 rooms
+    var lightSavingsMonthly = lightBillShare * 0.25 * lightFactor;
+    var lightSavingsAnnual = Math.round(lightSavingsMonthly * 12);
+
+    // Electric boiler: smart timer saves ~500 NIS/year
+    var boilerSavingsAnnual = hasBoiler ? 500 : 0;
+
+    var totalSavingsAnnual = acSavingsAnnual + lightSavingsAnnual + boilerSavingsAnnual;
+
+    // Investment cost estimate
+    var investmentCost = 0;
+    investmentCost += numAc * 330;       // Sensibo Air per AC
+    investmentCost += numLights * 40;    // Sonoff ZBMINI-L2 per room
+    if (hasBoiler) {
+      investmentCost += 50;              // Shelly Plus 1 for boiler
+    }
+
+    // ROI in months
+    var roiMonths = totalSavingsAnnual > 0 ? Math.ceil((investmentCost / totalSavingsAnnual) * 12) : 0;
+
+    // Show results
+    var resultsEl = document.getElementById('savings-results');
+    if (resultsEl) {
+      resultsEl.classList.remove('hidden');
+    }
+
+    var formatCurrency = function(amount) {
+      return new Intl.NumberFormat('he-IL', {
+        style: 'currency',
+        currency: 'ILS',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      }).format(amount);
+    };
+
+    document.getElementById('save-ac').textContent = formatCurrency(acSavingsAnnual);
+    document.getElementById('save-lights').textContent = formatCurrency(lightSavingsAnnual);
+    document.getElementById('save-boiler').textContent = hasBoiler ? formatCurrency(boilerSavingsAnnual) : '&#8362;0';
+    document.getElementById('save-total').textContent = formatCurrency(totalSavingsAnnual);
+
+    if (roiMonths > 0 && roiMonths < 100) {
+      document.getElementById('save-roi').textContent = roiMonths + ' חודשים';
+    } else if (totalSavingsAnnual === 0) {
+      document.getElementById('save-roi').textContent = '--';
+    } else {
+      document.getElementById('save-roi').textContent = 'מיידי';
+    }
+  }
+  </script>
+</body>
+</html>
