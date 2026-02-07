@@ -143,22 +143,22 @@ function initBudgetCalculator() {
     const config = prices[level]
     const items = []
 
-    items.push({ name: 'Smart Hub / Controller', qty: 1, price: config.hub })
-    items.push({ name: 'Smart Lights (per room)', qty: rooms, price: config.lightsPerRoom })
-    items.push({ name: 'Motion Sensors', qty: Math.ceil(rooms / 2), price: config.sensor })
-    items.push({ name: 'Smart Plugs', qty: Math.min(rooms, 4), price: config.plug })
+    items.push({ name: 'האב / בקר חכם', qty: 1, price: config.hub })
+    items.push({ name: 'תאורה חכמה (לחדר)', qty: rooms, price: config.lightsPerRoom })
+    items.push({ name: 'חיישני תנועה', qty: Math.ceil(rooms / 2), price: config.sensor })
+    items.push({ name: 'שקעים חכמים', qty: Math.min(rooms, 4), price: config.plug })
 
     if (config.camera) {
-      items.push({ name: 'Security Camera', qty: level === 'advanced' ? 2 : 1, price: config.camera })
+      items.push({ name: 'מצלמת אבטחה', qty: level === 'advanced' ? 2 : 1, price: config.camera })
     }
     if (config.thermostat) {
-      items.push({ name: 'Smart AC Controller', qty: Math.ceil(rooms / 2), price: config.thermostat })
+      items.push({ name: 'בקר מזגן חכם', qty: Math.ceil(rooms / 2), price: config.thermostat })
     }
     if (config.lock) {
-      items.push({ name: 'Smart Door Lock', qty: 1, price: config.lock })
+      items.push({ name: 'מנעול חכם', qty: 1, price: config.lock })
     }
     if (config.vacuum) {
-      items.push({ name: 'Robot Vacuum', qty: 1, price: config.vacuum })
+      items.push({ name: 'שואב רובוטי', qty: 1, price: config.vacuum })
     }
 
     const total = items.reduce((sum, item) => sum + (item.qty * item.price), 0)
