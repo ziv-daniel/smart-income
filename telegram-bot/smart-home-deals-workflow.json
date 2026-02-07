@@ -1,0 +1,193 @@
+{
+  "name": "Smart Home IL - Telegram Deals",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8,14,20 * * *"
+            }
+          ]
+        }
+      },
+      "id": "a1000001-0001-4000-8000-000000000001",
+      "name": "Daily Deal Timer",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        250,
+        300
+      ],
+      "notes": "Runs 3x/day at 8:00, 14:00, 20:00 Israel time"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://ziv-daniel.github.io/smart-income/telegram-bot/products-database.json",
+        "options": {}
+      },
+      "id": "a1000001-0001-4000-8000-000000000002",
+      "name": "Fetch Products",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        300
+      ],
+      "notes": "Loads product database from GitHub Pages"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===== CONFIGURATION - EDIT THESE! =====\nconst BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';\nconst CHANNEL_ID = '@SmartHomeIL';\n// ========================================\n\n// Load products from website\nconst data = $input.item.json;\nif (!data || !data.products || data.products.length === 0) {\n  throw new Error('Failed to load products. Check the products URL.');\n}\nconst products = data.products;\n\n// Rotation tracking via workflow static data\nconst staticData = $getWorkflowStaticData('global');\nif (typeof staticData.currentIndex !== 'number') {\n  staticData.currentIndex = 0;\n}\nif (!staticData.weeklyProducts) {\n  staticData.weeklyProducts = [];\n}\n\n// Pick next product (sequential rotation)\nconst product = products[staticData.currentIndex % products.length];\nstaticData.currentIndex = (staticData.currentIndex + 1) % products.length;\n\n// Track for weekly digest\nstaticData.weeklyProducts.push({\n  name: product.name,\n  hebrewName: product.hebrewName,\n  priceDisplay: product.priceDisplay,\n  buyLink: product.buyLink\n});\n\n// Build beautiful Hebrew deal message\nconst haLabels = {\n  full: 'נתמך מלא ✅',\n  partial: 'נתמך חלקית ⚠️',\n  none: 'לא נתמך ❌'\n};\nconst catEmoji = {\n  switches: '💡',\n  'ac-controllers': '❄️',\n  sensors: '📡',\n  hubs: '🔌',\n  vacuums: '🧹',\n  plugs: '🔌',\n  cameras: '📷',\n  lighting: '💡',\n  covers: '🪟',\n  climate: '🌡️',\n  controllers: '🎮'\n};\nconst emoji = catEmoji[product.category] || '📦';\n\nconst text = `🏠 <b>דיל בית חכם!</b>\n\n${emoji} <b>${product.name}</b> - ${product.hebrewName}\n💰 <b>${product.priceDisplay}</b>\n⚡ מאומת 220V ישראלי ✅\n🔌 פרוטוקול: ${product.protocol}\n🏡 Home Assistant: ${haLabels[product.homeAssistantSupport]}\n⭐ דירוג: ${product.rating}/5\n\n✨ ${product.description}\n\n🛒 <a href=\"${product.buyLink}\">לרכישה ←</a>\n📖 <a href=\"${product.websiteLink}\">למדריך המלא באתר</a>\n\n#בית_חכם #220V #SmartHomeIL`;\n\nreturn [{ json: { botToken: BOT_TOKEN, channelId: CHANNEL_ID, text } }];\n"
+      },
+      "id": "a1000001-0001-4000-8000-000000000003",
+      "name": "Pick & Format Deal",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        300
+      ],
+      "notes": "Selects next product (rotation) and formats Hebrew Telegram message"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.telegram.org/bot{{ $json.botToken }}/sendMessage",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ chat_id: $json.channelId, text: $json.text, parse_mode: 'HTML' }) }}",
+        "options": {}
+      },
+      "id": "a1000001-0001-4000-8000-000000000004",
+      "name": "Send Deal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        300
+      ],
+      "notes": "Posts deal message to Telegram channel via Bot API"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 12 * * 5"
+            }
+          ]
+        }
+      },
+      "id": "a1000001-0001-4000-8000-000000000005",
+      "name": "Friday Digest Timer",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        250,
+        550
+      ],
+      "notes": "Runs every Friday at 12:00 Israel time"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===== CONFIGURATION - EDIT THESE! =====\nconst BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';\nconst CHANNEL_ID = '@SmartHomeIL';\nconst WEBSITE_URL = 'https://ziv-daniel.github.io/smart-income/';\n// ========================================\n\nconst staticData = $getWorkflowStaticData('global');\nconst weeklyProducts = staticData.weeklyProducts || [];\n\n// Skip if no products were posted this week\nif (weeklyProducts.length === 0) {\n  return [];\n}\n\nconst productsList = weeklyProducts.map((p, i) =>\n  `${i + 1}. <b>${p.name}</b> - ${p.hebrewName} (${p.priceDisplay})`\n).join('\\n');\n\nconst text = `📋 <b>סיכום שבועי — בית חכם IL</b>\n\nהשבוע סקרנו ${weeklyProducts.length} מוצרים מעולים:\n\n${productsList}\n\n🌐 <a href=\"${WEBSITE_URL}\">לכל ההשוואות והמדריכים באתר</a>\n\n💡 טיפ: הצטרפו לערוץ כדי לקבל 3 דילים חדשים כל יום!\n\n#בית_חכם #סיכום_שבועי #SmartHomeIL`;\n\n// Clear weekly tracking for next week\nstaticData.weeklyProducts = [];\n\nreturn [{ json: { botToken: BOT_TOKEN, channelId: CHANNEL_ID, text } }];\n"
+      },
+      "id": "a1000001-0001-4000-8000-000000000006",
+      "name": "Format Weekly Digest",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        550
+      ],
+      "notes": "Creates weekly summary of all products posted this week"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.telegram.org/bot{{ $json.botToken }}/sendMessage",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ chat_id: $json.channelId, text: $json.text, parse_mode: 'HTML' }) }}",
+        "options": {}
+      },
+      "id": "a1000001-0001-4000-8000-000000000007",
+      "name": "Send Digest",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        750,
+        550
+      ],
+      "notes": "Posts weekly digest to Telegram channel"
+    }
+  ],
+  "connections": {
+    "Daily Deal Timer": {
+      "main": [
+        [
+          {
+            "node": "Fetch Products",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Products": {
+      "main": [
+        [
+          {
+            "node": "Pick & Format Deal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick & Format Deal": {
+      "main": [
+        [
+          {
+            "node": "Send Deal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Friday Digest Timer": {
+      "main": [
+        [
+          {
+            "node": "Format Weekly Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Weekly Digest": {
+      "main": [
+        [
+          {
+            "node": "Send Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Jerusalem"
+  },
+  "pinData": {},
+  "tags": []
+}
