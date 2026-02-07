@@ -1,45 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found - SmartHomeIL</title>
+  <title>404 - הדף לא נמצא | בית חכם IL</title>
+  <meta name="description" content="הדף שחיפשת לא נמצא. חזרו לדף הבית של בית חכם IL.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- ===== Navigation ===== -->
   <nav class="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <span class="logo-icon">&#127969;</span>
-        Smart<span>HomeIL</span>
+        <span class="logo-icon">&#127968;</span>
+        בית חכם<span>IL</span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="smart-home.html">Smart Home</a></li>
-        <li><a href="salary-calculator.html">Salary Calculator</a></li>
-        <li><a href="money-transfers.html">Money Transfers</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="index.html">בית</a></li>
+        <li><a href="smart-home.html">בית חכם</a></li>
+        <li><a href="salary-calculator.html">מחשבון שכר</a></li>
+        <li><a href="money-transfers.html">העברות כספים</a></li>
+        <li><a href="about.html">אודות</a></li>
       </ul>
+      <button class="mobile-toggle" aria-label="פתיחת תפריט ניווט">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
-  <section class="hero" style="text-align:center; padding: 12rem 0 6rem">
+  <!-- ===== 404 Hero ===== -->
+  <section class="hero" style="text-align: center; display: flex; align-items: center; justify-content: center; min-height: 80vh;">
     <div class="container">
-      <div style="font-size:5rem; margin-bottom:1.5rem">&#128270;</div>
-      <h1 style="color:white">Page Not Found</h1>
-      <p style="color:rgba(255,255,255,0.8); font-size:1.2rem; max-width:500px; margin:1rem auto 2rem">
-        The page you're looking for doesn't exist or has been moved. Let's get you back on track.
-      </p>
-      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap">
-        <a href="index.html" class="btn btn-primary btn-lg">Go Home</a>
-        <a href="smart-home.html" class="btn btn-outline btn-lg">Smart Home Guide</a>
+      <div class="hero-content" style="margin: 0 auto; text-align: center; max-width: 600px;">
+        <div style="font-size: 5rem; margin-bottom: 1.5rem;">&#128269;</div>
+        <h1 style="color: white; margin-bottom: 1rem;">הדף לא נמצא</h1>
+        <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 2.5rem;">הדף שחיפשת לא קיים או הועבר. בואו נחזיר אתכם למסלול.</p>
+        <div class="hero-actions" style="justify-content: center;">
+          <a href="index.html" class="btn btn-primary btn-lg">לדף הבית</a>
+          <a href="smart-home.html" class="btn btn-outline btn-lg">מדריך בית חכם</a>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- About Column -->
+        <div class="footer-about">
+          <h4>&#127968; בית חכם IL</h4>
+          <p>המדריך שלך למוצרי בית חכם, כלי שכר והעברות כספים בישראל. כל מוצר נבדק על חשמל 220V ישראלי.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4>קישורים מהירים</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">בית</a></li>
+            <li><a href="smart-home.html">בית חכם</a></li>
+            <li><a href="salary-calculator.html">מחשבון שכר</a></li>
+            <li><a href="money-transfers.html">העברות כספים</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div>
+          <h4>משאבים</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">אודות</a></li>
+            <li><a href="about.html#contact">צור קשר</a></li>
+            <li><a href="about.html#privacy">מדיניות פרטיות</a></li>
+            <li><a href="about.html#terms">תנאי שימוש</a></li>
+          </ul>
+        </div>
+
+        <!-- Smart Home -->
+        <div>
+          <h4>מדריכים פופולריים</h4>
+          <ul class="footer-links">
+            <li><a href="smart-home.html#zigbee">מכשירי Zigbee</a></li>
+            <li><a href="smart-home.html#ac">שליטה חכמה במזגן</a></li>
+            <li><a href="smart-home.html#lighting">תאורה חכמה</a></li>
+            <li><a href="smart-home.html#vacuums">שואבים רובוטיים</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 בית חכם IL. כל הזכויות שמורות.</p>
+        <p class="disclaimer">גילוי נאות: חלק מהקישורים באתר הם קישורי שותפים. אנו עשויים לקבל עמלה קטנה אם תרכשו דרכם, ללא עלות נוספת עבורכם. הדבר מסייע לתחזוקת האתר ומאפשר לנו להמשיך לבדוק מוצרים. כל הדעות הן שלנו ומבוססות על בדיקות אמיתיות.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
   <script src="js/app.js"></script>
 </body>
 </html>

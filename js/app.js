@@ -194,7 +194,7 @@ const SalaryCalculator = {
 
 // --- Format currency ---
 function formatNIS(amount) {
-  return new Intl.NumberFormat('en-IL', {
+  return new Intl.NumberFormat('he-IL', {
     style: 'currency',
     currency: 'ILS',
     minimumFractionDigits: 0,
@@ -203,7 +203,7 @@ function formatNIS(amount) {
 }
 
 function formatUSD(amount) {
-  return new Intl.NumberFormat('en-US', {
+  return new Intl.NumberFormat('he-IL', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 0,
@@ -379,7 +379,7 @@ function initTransferCalculator() {
       fee: 0.0055,
       minFee: 3,
       markup: 0.003,
-      speed: '1-2 days',
+      speed: '1-2 ימי עסקים',
       url: 'https://wise.com/invite/',
       rating: 4.8
     },
@@ -388,7 +388,7 @@ function initTransferCalculator() {
       fee: 0.029,
       minFee: 5,
       markup: 0.035,
-      speed: '2-3 days',
+      speed: '2-3 ימי עסקים',
       url: 'https://www.paypal.com',
       rating: 3.5
     },
@@ -397,16 +397,16 @@ function initTransferCalculator() {
       fee: 0.015,
       minFee: 8,
       markup: 0.025,
-      speed: 'Minutes - 2 days',
+      speed: 'דקות - 2 ימים',
       url: 'https://www.westernunion.com',
       rating: 3.2
     },
     {
-      name: 'Bank Transfer',
+      name: 'העברה בנקאית',
       fee: 0.0,
       minFee: 25,
       markup: 0.04,
-      speed: '3-5 days',
+      speed: '3-5 ימי עסקים',
       url: '#',
       rating: 2.5
     },
@@ -415,7 +415,7 @@ function initTransferCalculator() {
       fee: 0.02,
       minFee: 3,
       markup: 0.005,
-      speed: '2-5 days',
+      speed: '2-5 ימי עסקים',
       url: 'https://www.payoneer.com',
       rating: 4.2
     },
@@ -424,7 +424,7 @@ function initTransferCalculator() {
       fee: 0.0,
       minFee: 0,
       markup: 0.01,
-      speed: '1-3 days',
+      speed: '1-3 ימי עסקים',
       url: 'https://www.ofx.com',
       rating: 4.0
     }
@@ -455,7 +455,7 @@ function initTransferCalculator() {
         <tr class="${i === 0 ? 'highlight' : ''}">
           <td>
             <strong>${r.name}</strong>
-            ${i === 0 ? '<span class="badge badge-success" style="margin-left:0.5rem">Best Value</span>' : ''}
+            ${i === 0 ? '<span class="badge badge-success" style="margin-right:0.5rem">הכי משתלם</span>' : ''}
           </td>
           <td>$${r.transferFee}</td>
           <td>${r.effectiveRate}</td>
@@ -464,7 +464,7 @@ function initTransferCalculator() {
           <td>${'&#9733;'.repeat(Math.round(r.rating))} ${r.rating}</td>
           <td>
             <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-              Send Now &rarr;
+              שלח עכשיו &larr;
             </a>
           </td>
         </tr>
@@ -477,7 +477,7 @@ function initTransferCalculator() {
 
     const savingsEl = document.getElementById('transfer-savings')
     if (savingsEl && savings > 0) {
-      savingsEl.innerHTML = `Using <strong>${bestProvider.name}</strong> saves you <strong>${formatNIS(savings)}</strong> compared to ${worstProvider.name} on this transfer!`
+      savingsEl.innerHTML = `שימוש ב-<strong>${bestProvider.name}</strong> חוסך לך <strong>${formatNIS(savings)}</strong> בהשוואה ל-${worstProvider.name} בהעברה זו!`
       savingsEl.classList.remove('hidden')
     }
   }
