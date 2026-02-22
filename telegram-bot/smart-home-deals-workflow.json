@@ -40,7 +40,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// ===== CONFIGURATION - EDIT THESE! =====\nconst BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';\nconst CHANNEL_ID = '@SmartHomeIL';\n// ========================================\n\n// Load products from website\nconst data = $input.item.json;\nif (!data || !data.products || data.products.length === 0) {\n  throw new Error('Failed to load products. Check the products URL.');\n}\nconst products = data.products;\n\n// Rotation tracking via workflow static data\nconst staticData = $getWorkflowStaticData('global');\nif (typeof staticData.currentIndex !== 'number') {\n  staticData.currentIndex = 0;\n}\nif (!staticData.weeklyProducts) {\n  staticData.weeklyProducts = [];\n}\n\n// Pick next product (sequential rotation)\nconst product = products[staticData.currentIndex % products.length];\nstaticData.currentIndex = (staticData.currentIndex + 1) % products.length;\n\n// Track for weekly digest\nstaticData.weeklyProducts.push({\n  name: product.name,\n  hebrewName: product.hebrewName,\n  priceDisplay: product.priceDisplay,\n  buyLink: product.buyLink\n});\n\n// Build beautiful Hebrew deal message\nconst haLabels = {\n  full: 'נתמך מלא ✅',\n  partial: 'נתמך חלקית ⚠️',\n  none: 'לא נתמך ❌'\n};\nconst catEmoji = {\n  switches: '💡',\n  'ac-controllers': '❄️',\n  sensors: '📡',\n  hubs: '🔌',\n  vacuums: '🧹',\n  plugs: '🔌',\n  cameras: '📷',\n  lighting: '💡',\n  covers: '🪟',\n  climate: '🌡️',\n  controllers: '🎮'\n};\nconst emoji = catEmoji[product.category] || '📦';\n\nconst text = `🏠 <b>דיל בית חכם!</b>\n\n${emoji} <b>${product.name}</b> - ${product.hebrewName}\n💰 <b>${product.priceDisplay}</b>\n⚡ מאומת 220V ישראלי ✅\n🔌 פרוטוקול: ${product.protocol}\n🏡 Home Assistant: ${haLabels[product.homeAssistantSupport]}\n⭐ דירוג: ${product.rating}/5\n\n✨ ${product.description}\n\n🛒 <a href=\"${product.buyLink}\">לרכישה ←</a>\n📖 <a href=\"${product.websiteLink}\">למדריך המלא באתר</a>\n\n#בית_חכם #220V #SmartHomeIL`;\n\nreturn [{ json: { botToken: BOT_TOKEN, channelId: CHANNEL_ID, text } }];\n"
+        "jsCode": "// ===== CONFIGURATION =====\nconst BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';\nconst CHANNEL_ID = '@SmartHomeIL_deals';\n// =========================\n\n// Load products from website\nconst data = $input.item.json;\nif (!data || !data.products || data.products.length === 0) {\n  throw new Error('Failed to load products. Check the products URL.');\n}\nconst products = data.products;\n\n// Rotation tracking via workflow static data\nconst staticData = $getWorkflowStaticData('global');\nif (typeof staticData.currentIndex !== 'number') {\n  staticData.currentIndex = 0;\n}\nif (!staticData.weeklyProducts) {\n  staticData.weeklyProducts = [];\n}\n\n// Pick next product (sequential rotation)\nconst product = products[staticData.currentIndex % products.length];\nstaticData.currentIndex = (staticData.currentIndex + 1) % products.length;\n\n// Track for weekly digest\nstaticData.weeklyProducts.push({\n  name: product.name,\n  hebrewName: product.hebrewName,\n  priceDisplay: product.priceDisplay,\n  buyLink: product.buyLink\n});\n\n// Build beautiful Hebrew deal message\nconst haLabels = {\n  full: 'נתמך מלא ✅',\n  partial: 'נתמך חלקית ⚠️',\n  none: 'לא נתמך ❌'\n};\nconst catEmoji = {\n  switches: '💡',\n  'ac-controllers': '❄️',\n  sensors: '📡',\n  hubs: '🔌',\n  vacuums: '🧹',\n  plugs: '🔌',\n  cameras: '📷',\n  lighting: '💡',\n  covers: '🪟',\n  climate: '🌡️',\n  controllers: '🎮'\n};\nconst emoji = catEmoji[product.category] || '📦';\n\nconst text = `🏠 <b>דיל בית חכם!</b>\n\n${emoji} <b>${product.name}</b> - ${product.hebrewName}\n💰 <b>${product.priceDisplay}</b>\n⚡ מאומת 220V ישראלי ✅\n🔌 פרוטוקול: ${product.protocol}\n🏡 Home Assistant: ${haLabels[product.homeAssistantSupport]}\n⭐ דירוג: ${product.rating}/5\n\n✨ ${product.description}\n\n🛒 <a href=\"${product.buyLink}\">לרכישה ←</a>\n📖 <a href=\"${product.websiteLink}\">למדריך המלא באתר</a>\n\n#בית_חכם #220V #SmartHomeIL`;\n\nreturn [{ json: { botToken: BOT_TOKEN, channelId: CHANNEL_ID, text } }];\n"
       },
       "id": "a1000001-0001-4000-8000-000000000003",
       "name": "Pick & Format Deal",
@@ -94,7 +94,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// ===== CONFIGURATION - EDIT THESE! =====\nconst BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';\nconst CHANNEL_ID = '@SmartHomeIL';\nconst WEBSITE_URL = 'https://ziv-daniel.github.io/smart-income/';\n// ========================================\n\nconst staticData = $getWorkflowStaticData('global');\nconst weeklyProducts = staticData.weeklyProducts || [];\n\n// Skip if no products were posted this week\nif (weeklyProducts.length === 0) {\n  return [];\n}\n\nconst productsList = weeklyProducts.map((p, i) =>\n  `${i + 1}. <b>${p.name}</b> - ${p.hebrewName} (${p.priceDisplay})`\n).join('\\n');\n\nconst text = `📋 <b>סיכום שבועי — בית חכם IL</b>\n\nהשבוע סקרנו ${weeklyProducts.length} מוצרים מעולים:\n\n${productsList}\n\n🌐 <a href=\"${WEBSITE_URL}\">לכל ההשוואות והמדריכים באתר</a>\n\n💡 טיפ: הצטרפו לערוץ כדי לקבל 3 דילים חדשים כל יום!\n\n#בית_חכם #סיכום_שבועי #SmartHomeIL`;\n\n// Clear weekly tracking for next week\nstaticData.weeklyProducts = [];\n\nreturn [{ json: { botToken: BOT_TOKEN, channelId: CHANNEL_ID, text } }];\n"
+        "jsCode": "// ===== CONFIGURATION =====\nconst BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';\nconst CHANNEL_ID = '@SmartHomeIL_deals';\nconst WEBSITE_URL = 'https://ziv-daniel.github.io/smart-income/';\n// =========================\n\nconst staticData = $getWorkflowStaticData('global');\nconst weeklyProducts = staticData.weeklyProducts || [];\n\n// Skip if no products were posted this week\nif (weeklyProducts.length === 0) {\n  return [];\n}\n\nconst productsList = weeklyProducts.map((p, i) =>\n  `${i + 1}. <b>${p.name}</b> - ${p.hebrewName} (${p.priceDisplay})`\n).join('\\n');\n\nconst text = `📋 <b>סיכום שבועי — בית חכם IL</b>\n\nהשבוע סקרנו ${weeklyProducts.length} מוצרים מעולים:\n\n${productsList}\n\n🌐 <a href=\"${WEBSITE_URL}\">לכל ההשוואות והמדריכים באתר</a>\n\n💡 טיפ: הצטרפו לערוץ כדי לקבל 3 דילים חדשים כל יום!\n\n#בית_חכם #סיכום_שבועי #SmartHomeIL`;\n\n// Clear weekly tracking for next week\nstaticData.weeklyProducts = [];\n\nreturn [{ json: { botToken: BOT_TOKEN, channelId: CHANNEL_ID, text } }];\n"
       },
       "id": "a1000001-0001-4000-8000-000000000006",
       "name": "Format Weekly Digest",
@@ -183,11 +183,10 @@
       ]
     }
   },
-  "active": false,
   "settings": {
     "executionOrder": "v1",
-    "timezone": "Asia/Jerusalem"
-  },
-  "pinData": {},
-  "tags": []
+    "timezone": "Asia/Jerusalem",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  }
 }

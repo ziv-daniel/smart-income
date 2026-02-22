@@ -54,7 +54,7 @@ In the workflow, open **both** Code nodes (`Pick & Format Deal` and `Format Week
 ```javascript
 // ===== CONFIGURATION - EDIT THESE! =====
 const BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';  // ← paste bot token from Step 1
-const CHANNEL_ID = '@SmartHomeIL';        // ← your channel username (or numeric ID)
+const CHANNEL_ID = '@SmartHomeIL_deals';        // ← your channel username (or numeric ID)
 // ========================================
 ```
 

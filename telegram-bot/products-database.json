@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "lastUpdated": "2026-02-07",
+    "lastUpdated": "2026-02-22",
     "totalProducts": 31,
     "currency": "ILS",
     "websiteUrl": "https://ziv-daniel.github.io/smart-income/",
@@ -20,7 +20,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "מתג חכם קומפקטי שנכנס מאחורי מתג הקיר הקיים. לא צריך חוט ניטרלי — מושלם לדירות ישנות בישראל. מחיר מנצח.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_sonoff_zbmini",
+      "buyLink": "https://s.click.aliexpress.com/e/_c4VYpEh5",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#switches",
       "tags": ["zigbee", "מתג", "ללא_ניטרלי", "220V", "חיסכון"]
     },
@@ -36,7 +36,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "הדגם הקלאסי של Sonoff. דורש חוט ניטרלי, אבל אמין מאוד. פופולרי מאוד בקהילת Home Assistant בישראל.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_sonoff_zbmini_l",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3AEGBGR",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#switches",
       "tags": ["zigbee", "מתג", "220V", "קלאסי"]
     },
@@ -52,7 +52,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "מתג WiFi קטנטן שנכנס לקופסת חשמל סטנדרטית בישראל. תומך בפלאש Tasmota לשליטה מקומית מלאה.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_sonoff_mini_r4",
+      "buyLink": "https://s.click.aliexpress.com/e/_c4nuGGpd",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#switches",
       "tags": ["wifi", "מתג", "220V", "tasmota"]
     },
@@ -68,7 +68,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "מתג קיר עם מסך מגע מזכוכית. זמין ב-1 עד 4 לחצנים. עיצוב אלגנטי שמשתלב יפה בבתים ישראליים.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_moes_wall_switch",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3Bc7b11",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#switches",
       "tags": ["zigbee", "מתג_קיר", "220V", "מסך_מגע"]
     },
@@ -117,7 +117,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "בקר IR אוניברסלי שהופך כל מזגן, טלוויזיה או מאוורר לחכם. תומך Matter — התקן העתיד של הבית החכם.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_switchbot_hub",
+      "buyLink": "https://s.click.aliexpress.com/e/_c4CkrG2R",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#ac-controllers",
       "tags": ["IR", "matter", "מזגן", "אוניברסלי"]
     },
@@ -133,7 +133,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "שלט אוניברסלי שתומך גם ב-IR וגם ב-RF. שולט במזגן, תריסים חשמליים, טלוויזיה ועוד. אינטגרציה מצוינת עם HA.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_broadlink_rm4",
+      "buyLink": "https://s.click.aliexpress.com/e/_c4eeL8Vd",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#ac-controllers",
       "tags": ["IR", "RF", "תריסים", "מזגן", "אוניברסלי"]
     },
@@ -149,7 +149,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "חיישן תנועה איכותי עם זווית רחבה ורגישות מתכווננת. סוללה שמחזיקה שנתיים+. בסיס מגנטי נוח.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_aqara_motion_p1",
+      "buyLink": "https://s.click.aliexpress.com/e/_c30iS0Hl",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#sensors",
       "tags": ["zigbee", "חיישן_תנועה", "aqara", "סוללה"]
     },
@@ -165,7 +165,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "חיישן פתיחת דלת/חלון קטן ואמין. מושלם לאבטחה ולאוטומציות (כיבוי מזגן כשפותחים חלון). סוללה ל-2 שנים.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_aqara_door",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3cQeGAn",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#sensors",
       "tags": ["zigbee", "חיישן_דלת", "אבטחה", "חיסכון"]
     },
@@ -181,7 +181,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "חיישן טמפרטורה ולחות מדויק. מצוין לשילוב עם Sensibo — המזגן נדלק אוטומטית כשחם. חיסכון אמיתי בחשמל.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_aqara_temp",
+      "buyLink": "https://s.click.aliexpress.com/e/_c2zM366r",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#sensors",
       "tags": ["zigbee", "טמפרטורה", "לחות", "חיסכון"]
     },
@@ -197,7 +197,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "חיישן טמפרטורה ולחות עם מסך LCD מובנה. רואים את הטמפרטורה ישירות + שולחים ל-Home Assistant. מחיר מנצח.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_sonoff_snzb02d",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3dupLYR",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#sensors",
       "tags": ["zigbee", "טמפרטורה", "מסך_LCD", "חיסכון"]
     },
@@ -213,7 +213,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "חיישן הצפה שיכול לחסוך אלפי שקלים בנזקי מים! שמים ליד מכונת כביסה, מדיח, או דוד שמש ומקבלים התראה מיידית.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_aqara_water",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3gO3K7t",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#sensors",
       "tags": ["zigbee", "הצפה", "מים", "אבטחה"]
     },
@@ -229,7 +229,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "הדונגל הפופולרי ביותר ל-Home Assistant. מחבר USB פשוט שהופך כל מחשב לרכז Zigbee. תומך במאות מכשירים.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_sonoff_dongle_e",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3GG5byB",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/starter-guide.html",
       "tags": ["zigbee", "dongle", "home_assistant", "רכז"]
     },
@@ -261,7 +261,7 @@
       "verified220v": true,
       "homeAssistantSupport": "partial",
       "description": "פאנל קיר עם מסך מגע שמשמש גם כרכז Zigbee. שולט בתאורה, מזגן, ומציג מצלמות. מחליף מתג קיר רגיל.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_sonoff_nspanel",
+      "buyLink": "https://s.click.aliexpress.com/e/_c42bSzx5",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html",
       "tags": ["zigbee", "פאנל", "מסך_מגע", "220V"]
     },
@@ -277,7 +277,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "שואב רובוטי טופ. שואב + שוטף + מייבש מגבונים + מרוקן אבק אוטומטית. מצוין לרצפות אריחים ישראליות.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_roborock_s8",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3sZWvv1",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#vacuums",
       "tags": ["שואב", "רובוט", "שטיפה", "פרימיום"],
       "isFeatured": true
@@ -294,7 +294,7 @@
       "verified220v": true,
       "homeAssistantSupport": "partial",
       "description": "מתחרה רציני ל-Roborock. הרמת מגבון אוטומטית כשעולה על שטיח. ניווט LiDAR מתקדם. יחס מחיר-ביצועים מצוין.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_dreame_l20",
+      "buyLink": "https://s.click.aliexpress.com/e/_c4Pnftn5",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#vacuums",
       "tags": ["שואב", "רובוט", "שטיפה", "LiDAR"]
     },
@@ -310,7 +310,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "שואב רובוטי עם שטיפה ותחנת ריקון. מצוין למי שרוצה שואב פרימיום בלי לשבור את הארנק. אמין ושקט.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_roborock_qrevo",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3D2A695",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#vacuums",
       "tags": ["שואב", "רובוט", "שטיפה", "מחיר_סביר"]
     },
@@ -326,7 +326,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "שקע חכם Zigbee שמדווח על צריכת חשמל. מחבר לתקע רגיל ושולט מהנייד. מושלם לדוד שמש או מכונת כביסה.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_sonoff_s26r2",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3hy5Gjp",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html",
       "tags": ["zigbee", "שקע", "220V", "מדידת_חשמל"]
     },
@@ -342,7 +342,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "שקע חכם שמגיע עם Tasmota מותקן מראש! שליטה מקומית מלאה ללא ענן. פלאג אנד פליי עם Home Assistant.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_athom_plug",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3UJUzSj",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html",
       "tags": ["wifi", "tasmota", "שקע", "220V", "מקומי"]
     },
@@ -358,7 +358,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "שקע חכם עם מדידת צריכת חשמל מדויקת. Tasmota מותקן מראש. אחד השקעים הפופולריים בקהילת HA הישראלית.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_nous_a1t",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3lTKGOP",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html",
       "tags": ["wifi", "tasmota", "שקע", "220V", "מדידת_חשמל"]
     },
@@ -374,7 +374,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "חיישן נוכחות מתקדם בטכנולוגיית מילימטר-גל. מזהה אנשים גם כשיושבים בלי לזוז! מזהה עד 5 אזורים בחדר.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_aqara_fp2",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3aTwDNZ",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#sensors",
       "tags": ["mmwave", "נוכחות", "wifi", "מתקדם"]
     },
@@ -390,7 +390,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "גשר שמחבר מכשירי Zigbee לרשת WiFi. אלטרנטיבה לדונגל USB אם אין לכם מחשב. תומך Tasmota.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_sonoff_zbbridge",
+      "buyLink": "https://s.click.aliexpress.com/e/_c2vP413V",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/starter-guide.html",
       "tags": ["zigbee", "גשר", "wifi", "tasmota"]
     },
@@ -406,7 +406,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "מצלמת אבטחה אלחוטית לחלוטין עם פאנל סולארי. 4K, ראיית לילה צבעונית, וללא מנוי חודשי. מושלמת לישראל השמשית.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_reolink_argus4",
+      "buyLink": "https://s.click.aliexpress.com/e/_c4P9NtkP",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html",
       "tags": ["מצלמה", "אבטחה", "סולארי", "4K", "ללא_מנוי"]
     },
@@ -422,7 +422,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "מצלמת אבטחה PoE — חיבור קווי אמין. איכות 4K, זיהוי אנשים/רכבים, ללא מנוי חודשי. הקלטה ל-NVR או NAS.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_reolink_810a",
+      "buyLink": "https://s.click.aliexpress.com/e/_c4UiuOlH",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html",
       "tags": ["מצלמה", "אבטחה", "PoE", "4K", "ללא_מנוי"]
     },
@@ -438,7 +438,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "פס LED חכם עם 16 מיליון צבעים. שליטה מהנייד ומ-Home Assistant. מושלם לתאורת אווירה בסלון או חדר שינה.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_yeelight_strip",
+      "buyLink": "https://s.click.aliexpress.com/e/_c4UAEfRV",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html",
       "tags": ["LED", "תאורה", "צבעוני", "wifi"]
     },
@@ -454,7 +454,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "מנוע תריס חכם שהופך תריס רגיל לחכם. סגירה/פתיחה מהנייד, לפי שעון, או לפי שקיעה/זריחה. חיסכון באנרגיה.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_zemismart_roller",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3kPeH8J",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html",
       "tags": ["zigbee", "תריס", "220V", "חיסכון"]
     },
@@ -470,7 +470,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "ראש תרמוסטטי חכם שמתאים לרדיאטורים בדירות ישנות. שולט בטמפרטורה לכל חדר בנפרד. חוסך עד 30% בגז.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_moes_trv",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3WkCevl",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html",
       "tags": ["zigbee", "תרמוסטט", "רדיאטור", "חיסכון"]
     },
@@ -486,7 +486,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "מתג קיר חכם עם תאורת LED RGB מובנית. מסך מגע, מחוות swipe, ואפשר לשנות צבע. הכי יפה שיש.",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_sonoff_tx_ultimate",
+      "buyLink": "https://s.click.aliexpress.com/e/_c4tlLJNv",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html#switches",
       "tags": ["מתג_קיר", "LED", "220V", "wifi", "zigbee"]
     },
@@ -502,7 +502,7 @@
       "verified220v": true,
       "homeAssistantSupport": "full",
       "description": "קובייה חכמה ששולטת בכל הבית. סובבים = עוצמת תאורה, הופכים = מצב, מנערים = כיבוי. כיף ויעיל!",
-      "buyLink": "https://s.click.aliexpress.com/e/_placeholder_aqara_cube",
+      "buyLink": "https://s.click.aliexpress.com/e/_c3R2ZfVD",
       "websiteLink": "https://ziv-daniel.github.io/smart-income/smart-home.html",
       "tags": ["zigbee", "שלט", "קובייה", "אוטומציה"]
     }
