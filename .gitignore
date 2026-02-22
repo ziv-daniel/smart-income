@@ -10,3 +10,12 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Playwright MCP logs
+.playwright-mcp/
+
+# Temp files / screenshots
+*.png
+*.txt
+nul
+snapshot-*.txt
