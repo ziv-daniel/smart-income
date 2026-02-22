@@ -124,6 +124,95 @@
         550
       ],
       "notes": "Posts weekly digest to Telegram channel"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 10 * * *"
+            }
+          ]
+        }
+      },
+      "id": "a1000001-0001-4000-8000-000000000010",
+      "name": "API Hot Deal Timer",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        250,
+        850
+      ],
+      "disabled": true,
+      "notes": "DISABLED - Enable after setting API key. Runs daily at 10:00 for trending deals"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===== AliExpress Affiliate API - Search Hot Products =====\n// SETUP: Replace APP_KEY and APP_SECRET with your Open Platform credentials\n// Get them at: https://openservice.aliexpress.com > App Console > Create App\n// ==============================================================\n\nconst APP_KEY = 'YOUR_APP_KEY_HERE';\nconst APP_SECRET = 'YOUR_APP_SECRET_HERE';\nconst TRACKING_ID = 'default';\n\n// Abort if API not configured\nif (APP_KEY === 'YOUR_APP_KEY_HERE') {\n  throw new Error('AliExpress API not configured. Set APP_KEY and APP_SECRET first.');\n}\n\n// Smart home search keywords (rotates daily)\nconst keywords = [\n  'zigbee smart switch 220v',\n  'smart home sensor zigbee',\n  'robot vacuum cleaner',\n  'smart plug wifi zigbee',\n  'smart ir remote control',\n  'zigbee temperature sensor',\n  'smart roller blind motor',\n  'smart led strip wifi',\n  'zigbee door sensor',\n  'smart thermostat valve'\n];\n\nconst staticData = $getWorkflowStaticData('global');\nif (typeof staticData.apiKeywordIndex !== 'number') {\n  staticData.apiKeywordIndex = 0;\n}\nconst keyword = keywords[staticData.apiKeywordIndex % keywords.length];\nstaticData.apiKeywordIndex = (staticData.apiKeywordIndex + 1) % keywords.length;\n\n// Build API request signature (HMAC-MD5)\nconst crypto = require('crypto');\nconst timestamp = new Date().toISOString().replace(/[-T:.Z]/g, '').slice(0, 14);\n\nconst params = {\n  app_key: APP_KEY,\n  format: 'json',\n  method: 'aliexpress.affiliate.hotproduct.query',\n  sign_method: 'md5',\n  timestamp: timestamp,\n  v: '2.0',\n  keywords: keyword,\n  category_ids: '',\n  page_no: '1',\n  page_size: '5',\n  target_currency: 'ILS',\n  target_language: 'en',\n  tracking_id: TRACKING_ID,\n  ship_to_country: 'IL',\n  sort: 'SALE_PRICE_ASC'\n};\n\n// Sort params and build sign string\nconst sortedKeys = Object.keys(params).sort();\nlet signStr = APP_SECRET;\nfor (const key of sortedKeys) {\n  signStr += key + params[key];\n}\nsignStr += APP_SECRET;\n\nconst sign = crypto.createHash('md5').update(signStr).digest('hex').toUpperCase();\n\n// Build query string\nconst qs = Object.entries({...params, sign}).map(([k,v]) => `${k}=${encodeURIComponent(v)}`).join('&');\nconst apiUrl = `https://api-sg.aliexpress.com/sync?${qs}`;\n\nreturn [{ json: { apiUrl, keyword, APP_KEY, APP_SECRET, TRACKING_ID } }];\n"
+      },
+      "id": "a1000001-0001-4000-8000-000000000011",
+      "name": "AliExpress API Search",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        850
+      ],
+      "disabled": true,
+      "notes": "DISABLED - Builds signed API request for hot smart home products"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.apiUrl }}",
+        "options": {}
+      },
+      "id": "a1000001-0001-4000-8000-000000000012",
+      "name": "Call AliExpress API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        850
+      ],
+      "disabled": true,
+      "notes": "DISABLED - Calls AliExpress Affiliate API for hot products"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===== Format API Hot Deal for Telegram =====\nconst BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';\nconst CHANNEL_ID = '@SmartHomeIL_deals';\n\nconst response = $input.item.json;\n\n// Parse API response\nconst result = response?.aliexpress_affiliate_hotproduct_query_response?.resp_result;\nif (!result || result.resp_code !== 200) {\n  throw new Error('API returned error: ' + JSON.stringify(result));\n}\n\nconst products = result.result?.products?.product || [];\nif (products.length === 0) {\n  return []; // No products found, skip\n}\n\n// Pick the best product (highest commission + good rating)\nconst product = products.sort((a, b) => {\n  const scoreA = (parseFloat(a.evaluate_rate) || 0) + (parseFloat(a.commission_rate) || 0);\n  const scoreB = (parseFloat(b.evaluate_rate) || 0) + (parseFloat(b.commission_rate) || 0);\n  return scoreB - scoreA;\n})[0];\n\nconst title = product.product_title || 'Smart Home Product';\nconst price = product.target_sale_price || product.target_original_price || '?';\nconst currency = product.target_sale_price_currency || 'ILS';\nconst affiliateUrl = product.promotion_link || product.product_detail_url;\nconst imageUrl = product.product_main_image_url || '';\nconst commission = product.commission_rate || '?';\nconst orders = product.lastest_volume || 0;\n\nconst text = `🔥 <b>דיל חם מאליאקספרס!</b>\\n\\n📦 <b>${title}</b>\\n💰 מחיר: ${currency} ${price}\\n📊 הזמנות: ${orders}+\\n💎 עמלה: ${commission}%\\n\\n🛒 <a href=\\\"${affiliateUrl}\\\">לרכישה עם הנחה ←</a>\\n📖 <a href=\\\"https://ziv-daniel.github.io/smart-income/\\\">עוד דילים באתר</a>\\n\\n#בית_חכם #דיל_חם #AliExpress #SmartHomeIL`;\n\nreturn [{ json: { botToken: BOT_TOKEN, channelId: CHANNEL_ID, text } }];\n"
+      },
+      "id": "a1000001-0001-4000-8000-000000000013",
+      "name": "Format API Deal",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        850
+      ],
+      "disabled": true,
+      "notes": "DISABLED - Formats API hot product result into Hebrew Telegram message"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.telegram.org/bot{{ $json.botToken }}/sendMessage",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ chat_id: $json.channelId, text: $json.text, parse_mode: 'HTML' }) }}",
+        "options": {}
+      },
+      "id": "a1000001-0001-4000-8000-000000000014",
+      "name": "Send API Deal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        850
+      ],
+      "disabled": true,
+      "notes": "DISABLED - Sends API-sourced hot deal to Telegram channel"
     }
   ],
   "connections": {
@@ -176,6 +265,50 @@
         [
           {
             "node": "Send Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API Hot Deal Timer": {
+      "main": [
+        [
+          {
+            "node": "AliExpress API Search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AliExpress API Search": {
+      "main": [
+        [
+          {
+            "node": "Call AliExpress API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call AliExpress API": {
+      "main": [
+        [
+          {
+            "node": "Format API Deal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format API Deal": {
+      "main": [
+        [
+          {
+            "node": "Send API Deal",
             "type": "main",
             "index": 0
           }
