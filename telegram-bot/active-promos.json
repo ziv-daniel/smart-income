@@ -1,0 +1,19 @@
+{
+  "active": true,
+  "saleName": "Summer Sale",
+  "discount": "80",
+  "validFrom": "2026-06-01",
+  "validUntil": "2026-06-10",
+  "codes": [
+    { "code": "AFSO3",  "minSpend": "$15",  "savings": "$3"   },
+    { "code": "AFSO6",  "minSpend": "$39",  "savings": "$6"   },
+    { "code": "AFSO10", "minSpend": "$69",  "savings": "$10"  },
+    { "code": "AFSO15", "minSpend": "$99",  "savings": "$15"  },
+    { "code": "AFSO24", "minSpend": "$169", "savings": "$24"  },
+    { "code": "AFSO40", "minSpend": "$279", "savings": "$40"  },
+    { "code": "AFSO65", "minSpend": "$469", "savings": "$65"  },
+    { "code": "AFSO110","minSpend": "$650", "savings": "$110" }
+  ],
+  "updatedAt": "2026-06-05",
+  "source": "AliExpress Affiliate Program email"
+}
