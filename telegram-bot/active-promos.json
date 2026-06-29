@@ -1,18 +1,10 @@
 {
-  "active": true,
-  "saleName": "Mid-Year Sale",
-  "discount": "80",
-  "validFrom": "2026-06-15",
-  "validUntil": "2026-06-20",
-  "codes": [
-    { "code": "AFMY2",  "minSpend": "$15",  "savings": "$2"  },
-    { "code": "AFMY4",  "minSpend": "$30",  "savings": "$4"  },
-    { "code": "AFMY9",  "minSpend": "$65",  "savings": "$9"  },
-    { "code": "AFMY15", "minSpend": "$120", "savings": "$15" },
-    { "code": "AFMY25", "minSpend": "$209", "savings": "$25" },
-    { "code": "AFMY40", "minSpend": "$329", "savings": "$40" },
-    { "code": "AFMY55", "minSpend": "$449", "savings": "$55" }
-  ],
-  "updatedAt": "2026-06-12",
-  "source": "AliExpress Affiliate Program email"
+  "active": false,
+  "saleName": "Choice Day / Summer Savings",
+  "discount": "60",
+  "validFrom": "2026-07-01",
+  "validUntil": "2026-07-07",
+  "codes": [],
+  "updatedAt": "2026-06-29",
+  "source": "AliExpress Affiliate Program email 2026-06-27"
 }
