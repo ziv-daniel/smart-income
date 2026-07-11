@@ -1,10 +1,18 @@
 {
-  "active": false,
-  "saleName": "Choice Day / Summer Savings",
+  "active": true,
+  "saleName": "Vacation Sale",
   "discount": "60",
-  "validFrom": "2026-07-01",
-  "validUntil": "2026-07-07",
-  "codes": [],
-  "updatedAt": "2026-06-29",
-  "source": "AliExpress Affiliate Program email 2026-06-27"
+  "validFrom": "2026-07-13",
+  "validUntil": "2026-07-19",
+  "codes": [
+    { "code": "AFV2", "minSpend": "$15", "savings": "$2" },
+    { "code": "AFV4", "minSpend": "$30", "savings": "$4" },
+    { "code": "AFV9", "minSpend": "$65", "savings": "$9" },
+    { "code": "AFV15", "minSpend": "$120", "savings": "$15" },
+    { "code": "AFV25", "minSpend": "$209", "savings": "$25" },
+    { "code": "AFV40", "minSpend": "$329", "savings": "$40" },
+    { "code": "AFV55", "minSpend": "$449", "savings": "$55" }
+  ],
+  "updatedAt": "2026-07-10",
+  "source": "AliExpress Affiliate Program email"
 }
