@@ -1,18 +1,19 @@
 {
   "active": true,
-  "saleName": "Vacation Sale",
-  "discount": "60",
-  "validFrom": "2026-07-13",
-  "validUntil": "2026-07-19",
+  "saleName": "August Mega Sale",
+  "discount": "80",
+  "validFrom": "2026-08-17",
+  "validUntil": "2026-08-26",
   "codes": [
-    { "code": "AFV2", "minSpend": "$15", "savings": "$2" },
-    { "code": "AFV4", "minSpend": "$30", "savings": "$4" },
-    { "code": "AFV9", "minSpend": "$65", "savings": "$9" },
-    { "code": "AFV15", "minSpend": "$120", "savings": "$15" },
-    { "code": "AFV25", "minSpend": "$209", "savings": "$25" },
-    { "code": "AFV40", "minSpend": "$329", "savings": "$40" },
-    { "code": "AFV55", "minSpend": "$449", "savings": "$55" }
+    { "code": "ILAFF01", "minSpend": "$15", "savings": "$3" },
+    { "code": "ILAFF02", "minSpend": "$35", "savings": "$5" },
+    { "code": "ILAFF03", "minSpend": "$59", "savings": "$9" },
+    { "code": "ILAFF04", "minSpend": "$85", "savings": "$13" },
+    { "code": "ILAFF05", "minSpend": "$159", "savings": "$25" },
+    { "code": "ILAFF06", "minSpend": "$239", "savings": "$35" },
+    { "code": "ILAFF07", "minSpend": "$429", "savings": "$60" },
+    { "code": "ILAFF08", "minSpend": "$550", "savings": "$90" }
   ],
-  "updatedAt": "2026-07-10",
+  "updatedAt": "2026-08-20",
   "source": "AliExpress Affiliate Program email"
 }
